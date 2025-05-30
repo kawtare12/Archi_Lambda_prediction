@@ -1,0 +1,231 @@
+[2024-12-01T22:48:31.834+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-01T22:48:31.876+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: consume_kafka_to_hive.consume_kafka_messages manual__2024-12-01T22:48:25.231582+00:00 [queued]>
+[2024-12-01T22:48:31.912+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: consume_kafka_to_hive.consume_kafka_messages manual__2024-12-01T22:48:25.231582+00:00 [queued]>
+[2024-12-01T22:48:31.914+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2024-12-01T22:48:32.034+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): consume_kafka_messages> on 2024-12-01 22:48:25.231582+00:00
+[2024-12-01T22:48:32.044+0000] {standard_task_runner.py:72} INFO - Started process 1810 to run task
+[2024-12-01T22:48:32.052+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'consume_kafka_to_hive', 'consume_kafka_messages', 'manual__2024-12-01T22:48:25.231582+00:00', '--job-id', '84', '--raw', '--subdir', 'DAGS_FOLDER/consume_kafka_to_hive.py', '--cfg-path', '/tmp/tmpbeqgbp1i']
+[2024-12-01T22:48:32.055+0000] {standard_task_runner.py:105} INFO - Job 84: Subtask consume_kafka_messages
+[2024-12-01T22:48:32.318+0000] {task_command.py:467} INFO - Running <TaskInstance: consume_kafka_to_hive.consume_kafka_messages manual__2024-12-01T22:48:25.231582+00:00 [running]> on host 45770b1a429e
+[2024-12-01T22:48:32.638+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='consume_kafka_to_hive' AIRFLOW_CTX_TASK_ID='consume_kafka_messages' AIRFLOW_CTX_EXECUTION_DATE='2024-12-01T22:48:25.231582+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-01T22:48:25.231582+00:00'
+[2024-12-01T22:48:32.645+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-01T22:48:32.997+0000] {hive.py:475} INFO - USE `default`
+[2024-12-01T22:48:33.442+0000] {hive.py:475} INFO - 
+    CREATE TABLE IF NOT EXISTS sales (
+        id STRING,
+        invoice_id STRING,
+        branch STRING,
+        city STRING,
+        customer_type STRING,
+        gender STRING,
+        product_line STRING,
+        unit_price FLOAT,
+        quantity INT,
+        tax_5_percent FLOAT,
+        total FLOAT,
+        `date` STRING,
+        time STRING,
+        payment STRING,
+        cogs FLOAT,
+        gross_margin_percentage FLOAT,
+        gross_income FLOAT,
+        rating FLOAT
+    ) STORED AS ORC
+    
+[2024-12-01T22:48:33.544+0000] {consume_kafka_to_hive.py:63} INFO - Subscribed to topic 'topic-hive'
+[2024-12-01T22:48:33.586+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': 'ddb06c94-9986-4e5a-9d7d-4d315dea1220', 'invoice_id': '665-32-9167', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 36.2599983215332, 'quantity': 2, 'tax_5_percent': 3.625999927520752, 'total': 76.14600372314453, 'date': '1/10/2019', 'time': '17:15', 'payment': 'Credit card', 'cogs': 72.5199966430664, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 3.625999927520752, 'rating': 7.199999809265137}
+[2024-12-01T22:48:33.594+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    'ddb06c94-9986-4e5a-9d7d-4d315dea1220', '665-32-9167', 'A', 'Yangon', 'Member', 'Female', 
+                    'Health and beauty', 36.2599983215332, 2, 3.625999927520752, 76.14600372314453, 
+                    '1/10/2019', '17:15', 'Credit card', 72.5199966430664, 4.761904716491699, 
+                    3.625999927520752, 7.199999809265137
+                )
+            
+[2024-12-01T22:48:57.230+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:48:57.232+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '55e28da6-4655-45ab-8940-17ded49d5eeb', 'invoice_id': '750-67-8428', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 74.69000244140625, 'quantity': 7, 'tax_5_percent': 26.14150047302246, 'total': 548.9714965820312, 'date': '1/5/2019', 'time': '13:08', 'payment': 'Ewallet', 'cogs': 522.8300170898438, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 26.14150047302246, 'rating': 9.100000381469727}
+[2024-12-01T22:48:57.244+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '55e28da6-4655-45ab-8940-17ded49d5eeb', '750-67-8428', 'A', 'Yangon', 'Member', 'Female', 
+                    'Health and beauty', 74.69000244140625, 7, 26.14150047302246, 548.9714965820312, 
+                    '1/5/2019', '13:08', 'Ewallet', 522.8300170898438, 4.761904716491699, 
+                    26.14150047302246, 9.100000381469727
+                )
+            
+[2024-12-01T22:49:01.129+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:01.132+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '03baf1de-0fb0-46fb-af0c-6cd4e98414c6', 'invoice_id': '226-31-3081', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 15.279999732971191, 'quantity': 5, 'tax_5_percent': 3.819999933242798, 'total': 80.22000122070312, 'date': '3/8/2019', 'time': '10:29', 'payment': 'Cash', 'cogs': 76.4000015258789, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 3.819999933242798, 'rating': 9.600000381469727}
+[2024-12-01T22:49:01.143+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '03baf1de-0fb0-46fb-af0c-6cd4e98414c6', '226-31-3081', 'C', 'Naypyitaw', 'Normal', 'Female', 
+                    'Electronic accessories', 15.279999732971191, 5, 3.819999933242798, 80.22000122070312, 
+                    '3/8/2019', '10:29', 'Cash', 76.4000015258789, 4.761904716491699, 
+                    3.819999933242798, 9.600000381469727
+                )
+            
+[2024-12-01T22:49:03.845+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:03.846+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '13e475ef-8827-4f67-8ac1-2d1e846d8856', 'invoice_id': '631-41-3108', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 46.33000183105469, 'quantity': 7, 'tax_5_percent': 16.215499877929688, 'total': 340.5255126953125, 'date': '3/3/2019', 'time': '13:23', 'payment': 'Credit card', 'cogs': 324.30999755859375, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 16.215499877929688, 'rating': 7.400000095367432}
+[2024-12-01T22:49:03.854+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '13e475ef-8827-4f67-8ac1-2d1e846d8856', '631-41-3108', 'A', 'Yangon', 'Normal', 'Male', 
+                    'Home and lifestyle', 46.33000183105469, 7, 16.215499877929688, 340.5255126953125, 
+                    '3/3/2019', '13:23', 'Credit card', 324.30999755859375, 4.761904716491699, 
+                    16.215499877929688, 7.400000095367432
+                )
+            
+[2024-12-01T22:49:06.341+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:06.343+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '9428d4de-65f7-4cfb-b62a-1144caa48338', 'invoice_id': '123-19-1176', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 58.220001220703125, 'quantity': 8, 'tax_5_percent': 23.288000106811523, 'total': 489.0480041503906, 'date': '1/27/2019', 'time': '20:33', 'payment': 'Ewallet', 'cogs': 465.760009765625, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 23.288000106811523, 'rating': 8.399999618530273}
+[2024-12-01T22:49:06.354+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '9428d4de-65f7-4cfb-b62a-1144caa48338', '123-19-1176', 'A', 'Yangon', 'Member', 'Male', 
+                    'Health and beauty', 58.220001220703125, 8, 23.288000106811523, 489.0480041503906, 
+                    '1/27/2019', '20:33', 'Ewallet', 465.760009765625, 4.761904716491699, 
+                    23.288000106811523, 8.399999618530273
+                )
+            
+[2024-12-01T22:49:09.349+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:09.351+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '679fb69b-519d-4eee-863e-508eab96427a', 'invoice_id': '373-73-7910', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 86.30999755859375, 'quantity': 7, 'tax_5_percent': 30.208499908447266, 'total': 634.3784790039062, 'date': '2/8/2019', 'time': '10:37', 'payment': 'Ewallet', 'cogs': 604.1699829101562, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 30.208499908447266, 'rating': 5.300000190734863}
+[2024-12-01T22:49:09.360+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '679fb69b-519d-4eee-863e-508eab96427a', '373-73-7910', 'A', 'Yangon', 'Normal', 'Male', 
+                    'Sports and travel', 86.30999755859375, 7, 30.208499908447266, 634.3784790039062, 
+                    '2/8/2019', '10:37', 'Ewallet', 604.1699829101562, 4.761904716491699, 
+                    30.208499908447266, 5.300000190734863
+                )
+            
+[2024-12-01T22:49:12.049+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:12.051+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': 'fe2a0bbc-c351-4fc7-abb4-580500788d66', 'invoice_id': '699-14-3026', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 85.38999938964844, 'quantity': 7, 'tax_5_percent': 29.886499404907227, 'total': 627.6165161132812, 'date': '3/25/2019', 'time': '18:30', 'payment': 'Ewallet', 'cogs': 597.72998046875, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 29.886499404907227, 'rating': 4.099999904632568}
+[2024-12-01T22:49:12.063+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    'fe2a0bbc-c351-4fc7-abb4-580500788d66', '699-14-3026', 'C', 'Naypyitaw', 'Normal', 'Male', 
+                    'Electronic accessories', 85.38999938964844, 7, 29.886499404907227, 627.6165161132812, 
+                    '3/25/2019', '18:30', 'Ewallet', 597.72998046875, 4.761904716491699, 
+                    29.886499404907227, 4.099999904632568
+                )
+            
+[2024-12-01T22:49:15.340+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:15.342+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '7b04ce22-eb83-4919-9fc7-30134ed664b9', 'invoice_id': '355-53-5943', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 68.83999633789062, 'quantity': 6, 'tax_5_percent': 20.652000427246094, 'total': 433.6919860839844, 'date': '2/25/2019', 'time': '14:36', 'payment': 'Ewallet', 'cogs': 413.0400085449219, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 20.652000427246094, 'rating': 5.800000190734863}
+[2024-12-01T22:49:15.351+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '7b04ce22-eb83-4919-9fc7-30134ed664b9', '355-53-5943', 'A', 'Yangon', 'Member', 'Female', 
+                    'Electronic accessories', 68.83999633789062, 6, 20.652000427246094, 433.6919860839844, 
+                    '2/25/2019', '14:36', 'Ewallet', 413.0400085449219, 4.761904716491699, 
+                    20.652000427246094, 5.800000190734863
+                )
+            
+[2024-12-01T22:49:18.400+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:18.401+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '16144a1b-0479-42e3-a6c6-ec9e99f08f78', 'invoice_id': '315-22-5665', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 73.55999755859375, 'quantity': 10, 'tax_5_percent': 36.779998779296875, 'total': 772.3800048828125, 'date': '2/24/2019', 'time': '11:38', 'payment': 'Ewallet', 'cogs': 735.5999755859375, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 36.779998779296875, 'rating': 8.0}
+[2024-12-01T22:49:18.410+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '16144a1b-0479-42e3-a6c6-ec9e99f08f78', '315-22-5665', 'C', 'Naypyitaw', 'Normal', 'Female', 
+                    'Home and lifestyle', 73.55999755859375, 10, 36.779998779296875, 772.3800048828125, 
+                    '2/24/2019', '11:38', 'Ewallet', 735.5999755859375, 4.761904716491699, 
+                    36.779998779296875, 8.0
+                )
+            
+[2024-12-01T22:49:20.930+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:20.932+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '19e75273-c45d-4c8a-addc-9f6f2d69310c', 'invoice_id': '665-32-9167', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 36.2599983215332, 'quantity': 2, 'tax_5_percent': 3.625999927520752, 'total': 76.14600372314453, 'date': '1/10/2019', 'time': '17:15', 'payment': 'Credit card', 'cogs': 72.5199966430664, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 3.625999927520752, 'rating': 7.199999809265137}
+[2024-12-01T22:49:20.944+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '19e75273-c45d-4c8a-addc-9f6f2d69310c', '665-32-9167', 'A', 'Yangon', 'Member', 'Female', 
+                    'Health and beauty', 36.2599983215332, 2, 3.625999927520752, 76.14600372314453, 
+                    '1/10/2019', '17:15', 'Credit card', 72.5199966430664, 4.761904716491699, 
+                    3.625999927520752, 7.199999809265137
+                )
+            
+[2024-12-01T22:49:23.664+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:23.667+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '86e5dd55-cd0d-4e15-ae0a-40d1419c807d', 'invoice_id': '750-67-8428', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 74.69000244140625, 'quantity': 7, 'tax_5_percent': 26.14150047302246, 'total': 548.9714965820312, 'date': '1/5/2019', 'time': '13:08', 'payment': 'Ewallet', 'cogs': 522.8300170898438, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 26.14150047302246, 'rating': 9.100000381469727}
+[2024-12-01T22:49:23.675+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '86e5dd55-cd0d-4e15-ae0a-40d1419c807d', '750-67-8428', 'A', 'Yangon', 'Member', 'Female', 
+                    'Health and beauty', 74.69000244140625, 7, 26.14150047302246, 548.9714965820312, 
+                    '1/5/2019', '13:08', 'Ewallet', 522.8300170898438, 4.761904716491699, 
+                    26.14150047302246, 9.100000381469727
+                )
+            
+[2024-12-01T22:49:26.078+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:26.080+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '43f2f53e-0f93-4914-ad97-7b43059ed576', 'invoice_id': '226-31-3081', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 15.279999732971191, 'quantity': 5, 'tax_5_percent': 3.819999933242798, 'total': 80.22000122070312, 'date': '3/8/2019', 'time': '10:29', 'payment': 'Cash', 'cogs': 76.4000015258789, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 3.819999933242798, 'rating': 9.600000381469727}
+[2024-12-01T22:49:26.090+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '43f2f53e-0f93-4914-ad97-7b43059ed576', '226-31-3081', 'C', 'Naypyitaw', 'Normal', 'Female', 
+                    'Electronic accessories', 15.279999732971191, 5, 3.819999933242798, 80.22000122070312, 
+                    '3/8/2019', '10:29', 'Cash', 76.4000015258789, 4.761904716491699, 
+                    3.819999933242798, 9.600000381469727
+                )
+            
+[2024-12-01T22:49:28.306+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:28.308+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': 'ac53ce9b-33bb-4e8b-91d3-4defad906067', 'invoice_id': '631-41-3108', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 46.33000183105469, 'quantity': 7, 'tax_5_percent': 16.215499877929688, 'total': 340.5255126953125, 'date': '3/3/2019', 'time': '13:23', 'payment': 'Credit card', 'cogs': 324.30999755859375, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 16.215499877929688, 'rating': 7.400000095367432}
+[2024-12-01T22:49:28.318+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    'ac53ce9b-33bb-4e8b-91d3-4defad906067', '631-41-3108', 'A', 'Yangon', 'Normal', 'Male', 
+                    'Home and lifestyle', 46.33000183105469, 7, 16.215499877929688, 340.5255126953125, 
+                    '3/3/2019', '13:23', 'Credit card', 324.30999755859375, 4.761904716491699, 
+                    16.215499877929688, 7.400000095367432
+                )
+            
+[2024-12-01T22:49:30.485+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:30.486+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': 'ef18678b-858a-44c2-9c7d-577899aaffe5', 'invoice_id': '123-19-1176', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 58.220001220703125, 'quantity': 8, 'tax_5_percent': 23.288000106811523, 'total': 489.0480041503906, 'date': '1/27/2019', 'time': '20:33', 'payment': 'Ewallet', 'cogs': 465.760009765625, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 23.288000106811523, 'rating': 8.399999618530273}
+[2024-12-01T22:49:30.497+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    'ef18678b-858a-44c2-9c7d-577899aaffe5', '123-19-1176', 'A', 'Yangon', 'Member', 'Male', 
+                    'Health and beauty', 58.220001220703125, 8, 23.288000106811523, 489.0480041503906, 
+                    '1/27/2019', '20:33', 'Ewallet', 465.760009765625, 4.761904716491699, 
+                    23.288000106811523, 8.399999618530273
+                )
+            
+[2024-12-01T22:49:32.743+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:32.744+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': 'dff5eb04-601f-44d4-bf8e-144afb199c23', 'invoice_id': '373-73-7910', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 86.30999755859375, 'quantity': 7, 'tax_5_percent': 30.208499908447266, 'total': 634.3784790039062, 'date': '2/8/2019', 'time': '10:37', 'payment': 'Ewallet', 'cogs': 604.1699829101562, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 30.208499908447266, 'rating': 5.300000190734863}
+[2024-12-01T22:49:32.755+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    'dff5eb04-601f-44d4-bf8e-144afb199c23', '373-73-7910', 'A', 'Yangon', 'Normal', 'Male', 
+                    'Sports and travel', 86.30999755859375, 7, 30.208499908447266, 634.3784790039062, 
+                    '2/8/2019', '10:37', 'Ewallet', 604.1699829101562, 4.761904716491699, 
+                    30.208499908447266, 5.300000190734863
+                )
+            
+[2024-12-01T22:49:35.478+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:35.479+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': 'f1aebfc8-7a74-47d3-b39f-ab6f41f6a47c', 'invoice_id': '699-14-3026', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 85.38999938964844, 'quantity': 7, 'tax_5_percent': 29.886499404907227, 'total': 627.6165161132812, 'date': '3/25/2019', 'time': '18:30', 'payment': 'Ewallet', 'cogs': 597.72998046875, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 29.886499404907227, 'rating': 4.099999904632568}
+[2024-12-01T22:49:35.489+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    'f1aebfc8-7a74-47d3-b39f-ab6f41f6a47c', '699-14-3026', 'C', 'Naypyitaw', 'Normal', 'Male', 
+                    'Electronic accessories', 85.38999938964844, 7, 29.886499404907227, 627.6165161132812, 
+                    '3/25/2019', '18:30', 'Ewallet', 597.72998046875, 4.761904716491699, 
+                    29.886499404907227, 4.099999904632568
+                )
+            
+[2024-12-01T22:49:37.985+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:37.987+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': '7fb8522c-c599-4f2f-bfe4-ad74010d4501', 'invoice_id': '355-53-5943', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 68.83999633789062, 'quantity': 6, 'tax_5_percent': 20.652000427246094, 'total': 433.6919860839844, 'date': '2/25/2019', 'time': '14:36', 'payment': 'Ewallet', 'cogs': 413.0400085449219, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 20.652000427246094, 'rating': 5.800000190734863}
+[2024-12-01T22:49:37.996+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    '7fb8522c-c599-4f2f-bfe4-ad74010d4501', '355-53-5943', 'A', 'Yangon', 'Member', 'Female', 
+                    'Electronic accessories', 68.83999633789062, 6, 20.652000427246094, 433.6919860839844, 
+                    '2/25/2019', '14:36', 'Ewallet', 413.0400085449219, 4.761904716491699, 
+                    20.652000427246094, 5.800000190734863
+                )
+            
+[2024-12-01T22:49:39.998+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:39.999+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': 'c0ccaf36-044f-4b8e-9caf-a941c89958b8', 'invoice_id': '315-22-5665', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 73.55999755859375, 'quantity': 10, 'tax_5_percent': 36.779998779296875, 'total': 772.3800048828125, 'date': '2/24/2019', 'time': '11:38', 'payment': 'Ewallet', 'cogs': 735.5999755859375, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 36.779998779296875, 'rating': 8.0}
+[2024-12-01T22:49:40.005+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    'c0ccaf36-044f-4b8e-9caf-a941c89958b8', '315-22-5665', 'C', 'Naypyitaw', 'Normal', 'Female', 
+                    'Home and lifestyle', 73.55999755859375, 10, 36.779998779296875, 772.3800048828125, 
+                    '2/24/2019', '11:38', 'Ewallet', 735.5999755859375, 4.761904716491699, 
+                    36.779998779296875, 8.0
+                )
+            
+[2024-12-01T22:49:42.199+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T22:49:42.202+0000] {consume_kafka_to_hive.py:92} INFO - Consumed message: {'id': 'fef5a4e7-29ca-4db5-b2ac-7fe36d3a6654', 'invoice_id': '665-32-9167', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 36.2599983215332, 'quantity': 2, 'tax_5_percent': 3.625999927520752, 'total': 76.14600372314453, 'date': '1/10/2019', 'time': '17:15', 'payment': 'Credit card', 'cogs': 72.5199966430664, 'gross_margin_percentage': 4.761904716491699, 'gross_income': 3.625999927520752, 'rating': 7.199999809265137}
+[2024-12-01T22:49:42.214+0000] {hive.py:475} INFO - 
+                INSERT INTO sales VALUES (
+                    'fef5a4e7-29ca-4db5-b2ac-7fe36d3a6654', '665-32-9167', 'A', 'Yangon', 'Member', 'Female', 
+                    'Health and beauty', 36.2599983215332, 2, 3.625999927520752, 76.14600372314453, 
+                    '1/10/2019', '17:15', 'Credit card', 72.5199966430664, 4.761904716491699, 
+                    3.625999927520752, 7.199999809265137
+                )
+            
+[2024-12-01T22:49:44.776+0000] {consume_kafka_to_hive.py:105} INFO - Inserted message into Hive.
+[2024-12-01T23:45:05.436+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2024-12-01T23:45:05.473+0000] {process_utils.py:132} INFO - Sending 15 to group 1810. PIDs of all processes in the group: [1810]
+[2024-12-01T23:45:05.476+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 1810
+[2024-12-01T23:45:05.538+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2024-12-01T23:45:05.545+0000] {process_utils.py:132} INFO - Sending 15 to group 1810. PIDs of all processes in the group: [1810]
+[2024-12-01T23:45:05.547+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 1810

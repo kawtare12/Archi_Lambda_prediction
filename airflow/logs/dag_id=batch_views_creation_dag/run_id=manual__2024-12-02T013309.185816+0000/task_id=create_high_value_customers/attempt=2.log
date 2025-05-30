@@ -1,0 +1,125 @@
+[2024-12-02T01:42:59.407+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-02T01:42:59.445+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_views_creation_dag.create_high_value_customers manual__2024-12-02T01:33:09.185816+00:00 [queued]>
+[2024-12-02T01:42:59.469+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_views_creation_dag.create_high_value_customers manual__2024-12-02T01:33:09.185816+00:00 [queued]>
+[2024-12-02T01:42:59.480+0000] {taskinstance.py:2866} INFO - Starting attempt 2 of 2
+[2024-12-02T01:42:59.543+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): create_high_value_customers> on 2024-12-02 01:33:09.185816+00:00
+[2024-12-02T01:42:59.549+0000] {standard_task_runner.py:72} INFO - Started process 1710 to run task
+[2024-12-02T01:42:59.552+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'batch_views_creation_dag', 'create_high_value_customers', 'manual__2024-12-02T01:33:09.185816+00:00', '--job-id', '115', '--raw', '--subdir', 'DAGS_FOLDER/batch_views.py', '--cfg-path', '/tmp/tmpyve1sbto']
+[2024-12-02T01:42:59.554+0000] {standard_task_runner.py:105} INFO - Job 115: Subtask create_high_value_customers
+[2024-12-02T01:42:59.675+0000] {task_command.py:467} INFO - Running <TaskInstance: batch_views_creation_dag.create_high_value_customers manual__2024-12-02T01:33:09.185816+00:00 [running]> on host 45770b1a429e
+[2024-12-02T01:42:59.853+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='batch_views_creation_dag' AIRFLOW_CTX_TASK_ID='create_high_value_customers' AIRFLOW_CTX_EXECUTION_DATE='2024-12-02T01:33:09.185816+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-02T01:33:09.185816+00:00'
+[2024-12-02T01:42:59.855+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-02T01:43:00.023+0000] {hive.py:475} INFO - USE `default`
+[2024-12-02T01:43:00.142+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS high_value_customers
+        STORED AS PARQUET
+        AS
+        SELECT
+            customer_id,
+            SUM(total) AS total_spent
+        FROM
+            sales
+        WHERE
+            YEAR(CAST(FROM_UNIXTIME(UNIX_TIMESTAMP(`date`, 'MM/dd/yyyy')) AS DATE)) = 2024
+        GROUP BY
+            customer_id
+        HAVING
+            SUM(total) > 10000
+    
+[2024-12-02T01:43:00.314+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/batch_views.py", line 34, in create_high_value_customers
+    cursor.execute("""
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyhive/hive.py", line 481, in execute
+    _check_status(response)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyhive/hive.py", line 611, in _check_status
+    raise OperationalError(response)
+pyhive.exc.OperationalError: TExecuteStatementResp(status=TStatus(statusCode=3, infoMessages=["*org.apache.hive.service.cli.HiveSQLException:Error while compiling statement: FAILED: SemanticException [Error 10004]: Line 13:12 Invalid table alias or column reference 'customer_id': (possible column names are: id, invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, tax_5_percent, total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating):17:16", 'org.apache.hive.service.cli.operation.Operation:toSQLException:Operation.java:380', 'org.apache.hive.service.cli.operation.SQLOperation:prepare:SQLOperation.java:206', 'org.apache.hive.service.cli.operation.SQLOperation:runInternal:SQLOperation.java:290', 'org.apache.hive.service.cli.operation.Operation:run:Operation.java:320', 'org.apache.hive.service.cli.session.HiveSessionImpl:executeStatementInternal:HiveSessionImpl.java:530', 'org.apache.hive.service.cli.session.HiveSessionImpl:executeStatement:HiveSessionImpl.java:506', 'org.apache.hive.service.cli.CLIService:executeStatement:CLIService.java:280', 'org.apache.hive.service.cli.thrift.ThriftCLIService:ExecuteStatement:ThriftCLIService.java:531', 'org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement:getResult:TCLIService.java:1437', 'org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement:getResult:TCLIService.java:1422', 'org.apache.thrift.ProcessFunction:process:ProcessFunction.java:39', 'org.apache.thrift.TBaseProcessor:process:TBaseProcessor.java:39', 'org.apache.hive.service.auth.TSetIpAddressProcessor:process:TSetIpAddressProcessor.java:56', 'org.apache.thrift.server.TThreadPoolServer$WorkerProcess:run:TThreadPoolServer.java:286', 'java.util.concurrent.ThreadPoolExecutor:runWorker:ThreadPoolExecutor.java:1142', 'java.util.concurrent.ThreadPoolExecutor$Worker:run:ThreadPoolExecutor.java:617', 'java.lang.Thread:run:Thread.java:748', "*org.apache.hadoop.hive.ql.parse.SemanticException:Line 13:12 Invalid table alias or column reference 'customer_id': (possible column names are: id, invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, tax_5_percent, total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating):33:17", 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genAllExprNodeDesc:SemanticAnalyzer.java:11620', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genExprNodeDesc:SemanticAnalyzer.java:11568', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genExprNodeDesc:SemanticAnalyzer.java:11536', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genExprNodeDesc:SemanticAnalyzer.java:11514', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genGroupByPlanMapGroupByOperator:SemanticAnalyzer.java:5202', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genGroupByPlanMapAggrNoSkew:SemanticAnalyzer.java:6307', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genBodyPlan:SemanticAnalyzer.java:9629', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genPlan:SemanticAnalyzer.java:10549', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genPlan:SemanticAnalyzer.java:10427', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genOPTree:SemanticAnalyzer.java:11125', 'org.apache.hadoop.hive.ql.parse.CalcitePlanner:genOPTree:CalcitePlanner.java:481', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:analyzeInternal:SemanticAnalyzer.java:11138', 'org.apache.hadoop.hive.ql.parse.CalcitePlanner:analyzeInternal:CalcitePlanner.java:286', 'org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer:analyze:BaseSemanticAnalyzer.java:258', 'org.apache.hadoop.hive.ql.Driver:compile:Driver.java:512', 'org.apache.hadoop.hive.ql.Driver:compileInternal:Driver.java:1317', 'org.apache.hadoop.hive.ql.Driver:compileAndRespond:Driver.java:1295', 'org.apache.hive.service.cli.operation.SQLOperation:prepare:SQLOperation.java:204'], sqlState='42000', errorCode=10004, errorMessage="Error while compiling statement: FAILED: SemanticException [Error 10004]: Line 13:12 Invalid table alias or column reference 'customer_id': (possible column names are: id, invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, tax_5_percent, total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating)"), operationHandle=None)
+[2024-12-02T01:43:00.374+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=batch_views_creation_dag, task_id=create_high_value_customers, run_id=manual__2024-12-02T01:33:09.185816+00:00, execution_date=20241202T013309, start_date=20241202T014259, end_date=20241202T014300
+[2024-12-02T01:43:00.506+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-02T01:43:00.508+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 115 for task create_high_value_customers (TExecuteStatementResp(status=TStatus(statusCode=3, infoMessages=["*org.apache.hive.service.cli.HiveSQLException:Error while compiling statement: FAILED: SemanticException [Error 10004]: Line 13:12 Invalid table alias or column reference 'customer_id': (possible column names are: id, invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, tax_5_percent, total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating):17:16", 'org.apache.hive.service.cli.operation.Operation:toSQLException:Operation.java:380', 'org.apache.hive.service.cli.operation.SQLOperation:prepare:SQLOperation.java:206', 'org.apache.hive.service.cli.operation.SQLOperation:runInternal:SQLOperation.java:290', 'org.apache.hive.service.cli.operation.Operation:run:Operation.java:320', 'org.apache.hive.service.cli.session.HiveSessionImpl:executeStatementInternal:HiveSessionImpl.java:530', 'org.apache.hive.service.cli.session.HiveSessionImpl:executeStatement:HiveSessionImpl.java:506', 'org.apache.hive.service.cli.CLIService:executeStatement:CLIService.java:280', 'org.apache.hive.service.cli.thrift.ThriftCLIService:ExecuteStatement:ThriftCLIService.java:531', 'org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement:getResult:TCLIService.java:1437', 'org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement:getResult:TCLIService.java:1422', 'org.apache.thrift.ProcessFunction:process:ProcessFunction.java:39', 'org.apache.thrift.TBaseProcessor:process:TBaseProcessor.java:39', 'org.apache.hive.service.auth.TSetIpAddressProcessor:process:TSetIpAddressProcessor.java:56', 'org.apache.thrift.server.TThreadPoolServer$WorkerProcess:run:TThreadPoolServer.java:286', 'java.util.concurrent.ThreadPoolExecutor:runWorker:ThreadPoolExecutor.java:1142', 'java.util.concurrent.ThreadPoolExecutor$Worker:run:ThreadPoolExecutor.java:617', 'java.lang.Thread:run:Thread.java:748', "*org.apache.hadoop.hive.ql.parse.SemanticException:Line 13:12 Invalid table alias or column reference 'customer_id': (possible column names are: id, invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, tax_5_percent, total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating):33:17", 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genAllExprNodeDesc:SemanticAnalyzer.java:11620', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genExprNodeDesc:SemanticAnalyzer.java:11568', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genExprNodeDesc:SemanticAnalyzer.java:11536', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genExprNodeDesc:SemanticAnalyzer.java:11514', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genGroupByPlanMapGroupByOperator:SemanticAnalyzer.java:5202', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genGroupByPlanMapAggrNoSkew:SemanticAnalyzer.java:6307', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genBodyPlan:SemanticAnalyzer.java:9629', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genPlan:SemanticAnalyzer.java:10549', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genPlan:SemanticAnalyzer.java:10427', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genOPTree:SemanticAnalyzer.java:11125', 'org.apache.hadoop.hive.ql.parse.CalcitePlanner:genOPTree:CalcitePlanner.java:481', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:analyzeInternal:SemanticAnalyzer.java:11138', 'org.apache.hadoop.hive.ql.parse.CalcitePlanner:analyzeInternal:CalcitePlanner.java:286', 'org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer:analyze:BaseSemanticAnalyzer.java:258', 'org.apache.hadoop.hive.ql.Driver:compile:Driver.java:512', 'org.apache.hadoop.hive.ql.Driver:compileInternal:Driver.java:1317', 'org.apache.hadoop.hive.ql.Driver:compileAndRespond:Driver.java:1295', 'org.apache.hive.service.cli.operation.SQLOperation:prepare:SQLOperation.java:204'], sqlState='42000', errorCode=10004, errorMessage="Error while compiling statement: FAILED: SemanticException [Error 10004]: Line 13:12 Invalid table alias or column reference 'customer_id': (possible column names are: id, invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, tax_5_percent, total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating)"), operationHandle=None); 1710)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/batch_views.py", line 34, in create_high_value_customers
+    cursor.execute("""
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyhive/hive.py", line 481, in execute
+    _check_status(response)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyhive/hive.py", line 611, in _check_status
+    raise OperationalError(response)
+pyhive.exc.OperationalError: TExecuteStatementResp(status=TStatus(statusCode=3, infoMessages=["*org.apache.hive.service.cli.HiveSQLException:Error while compiling statement: FAILED: SemanticException [Error 10004]: Line 13:12 Invalid table alias or column reference 'customer_id': (possible column names are: id, invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, tax_5_percent, total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating):17:16", 'org.apache.hive.service.cli.operation.Operation:toSQLException:Operation.java:380', 'org.apache.hive.service.cli.operation.SQLOperation:prepare:SQLOperation.java:206', 'org.apache.hive.service.cli.operation.SQLOperation:runInternal:SQLOperation.java:290', 'org.apache.hive.service.cli.operation.Operation:run:Operation.java:320', 'org.apache.hive.service.cli.session.HiveSessionImpl:executeStatementInternal:HiveSessionImpl.java:530', 'org.apache.hive.service.cli.session.HiveSessionImpl:executeStatement:HiveSessionImpl.java:506', 'org.apache.hive.service.cli.CLIService:executeStatement:CLIService.java:280', 'org.apache.hive.service.cli.thrift.ThriftCLIService:ExecuteStatement:ThriftCLIService.java:531', 'org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement:getResult:TCLIService.java:1437', 'org.apache.hive.service.rpc.thrift.TCLIService$Processor$ExecuteStatement:getResult:TCLIService.java:1422', 'org.apache.thrift.ProcessFunction:process:ProcessFunction.java:39', 'org.apache.thrift.TBaseProcessor:process:TBaseProcessor.java:39', 'org.apache.hive.service.auth.TSetIpAddressProcessor:process:TSetIpAddressProcessor.java:56', 'org.apache.thrift.server.TThreadPoolServer$WorkerProcess:run:TThreadPoolServer.java:286', 'java.util.concurrent.ThreadPoolExecutor:runWorker:ThreadPoolExecutor.java:1142', 'java.util.concurrent.ThreadPoolExecutor$Worker:run:ThreadPoolExecutor.java:617', 'java.lang.Thread:run:Thread.java:748', "*org.apache.hadoop.hive.ql.parse.SemanticException:Line 13:12 Invalid table alias or column reference 'customer_id': (possible column names are: id, invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, tax_5_percent, total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating):33:17", 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genAllExprNodeDesc:SemanticAnalyzer.java:11620', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genExprNodeDesc:SemanticAnalyzer.java:11568', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genExprNodeDesc:SemanticAnalyzer.java:11536', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genExprNodeDesc:SemanticAnalyzer.java:11514', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genGroupByPlanMapGroupByOperator:SemanticAnalyzer.java:5202', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genGroupByPlanMapAggrNoSkew:SemanticAnalyzer.java:6307', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genBodyPlan:SemanticAnalyzer.java:9629', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genPlan:SemanticAnalyzer.java:10549', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genPlan:SemanticAnalyzer.java:10427', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:genOPTree:SemanticAnalyzer.java:11125', 'org.apache.hadoop.hive.ql.parse.CalcitePlanner:genOPTree:CalcitePlanner.java:481', 'org.apache.hadoop.hive.ql.parse.SemanticAnalyzer:analyzeInternal:SemanticAnalyzer.java:11138', 'org.apache.hadoop.hive.ql.parse.CalcitePlanner:analyzeInternal:CalcitePlanner.java:286', 'org.apache.hadoop.hive.ql.parse.BaseSemanticAnalyzer:analyze:BaseSemanticAnalyzer.java:258', 'org.apache.hadoop.hive.ql.Driver:compile:Driver.java:512', 'org.apache.hadoop.hive.ql.Driver:compileInternal:Driver.java:1317', 'org.apache.hadoop.hive.ql.Driver:compileAndRespond:Driver.java:1295', 'org.apache.hive.service.cli.operation.SQLOperation:prepare:SQLOperation.java:204'], sqlState='42000', errorCode=10004, errorMessage="Error while compiling statement: FAILED: SemanticException [Error 10004]: Line 13:12 Invalid table alias or column reference 'customer_id': (possible column names are: id, invoice_id, branch, city, customer_type, gender, product_line, unit_price, quantity, tax_5_percent, total, date, time, payment, cogs, gross_margin_percentage, gross_income, rating)"), operationHandle=None)
+[2024-12-02T01:43:00.575+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2024-12-02T01:43:00.684+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-02T01:43:00.799+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

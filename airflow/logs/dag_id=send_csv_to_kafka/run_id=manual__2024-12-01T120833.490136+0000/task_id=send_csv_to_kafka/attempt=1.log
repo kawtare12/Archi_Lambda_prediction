@@ -1,0 +1,19 @@
+[2024-12-01T12:08:40.975+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-01T12:08:41.024+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: send_csv_to_kafka.send_csv_to_kafka manual__2024-12-01T12:08:33.490136+00:00 [queued]>
+[2024-12-01T12:08:41.053+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: send_csv_to_kafka.send_csv_to_kafka manual__2024-12-01T12:08:33.490136+00:00 [queued]>
+[2024-12-01T12:08:41.055+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2024-12-01T12:08:41.137+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): send_csv_to_kafka> on 2024-12-01 12:08:33.490136+00:00
+[2024-12-01T12:08:41.159+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=413) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-12-01T12:08:41.164+0000] {standard_task_runner.py:72} INFO - Started process 427 to run task
+[2024-12-01T12:08:41.167+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'send_csv_to_kafka', 'send_csv_to_kafka', 'manual__2024-12-01T12:08:33.490136+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/dag_test.py', '--cfg-path', '/tmp/tmphbcvtow4']
+[2024-12-01T12:08:41.176+0000] {standard_task_runner.py:105} INFO - Job 38: Subtask send_csv_to_kafka
+[2024-12-01T12:08:41.429+0000] {task_command.py:467} INFO - Running <TaskInstance: send_csv_to_kafka.send_csv_to_kafka manual__2024-12-01T12:08:33.490136+00:00 [running]> on host 45770b1a429e
+[2024-12-01T12:08:41.776+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='send_csv_to_kafka' AIRFLOW_CTX_TASK_ID='send_csv_to_kafka' AIRFLOW_CTX_EXECUTION_DATE='2024-12-01T12:08:33.490136+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-01T12:08:33.490136+00:00'
+[2024-12-01T12:08:41.782+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-01T12:08:45.024+0000] {dag_test.py:53} INFO - Toutes les données ont été publiées sur le topic test-topic.
+[2024-12-01T12:08:45.026+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-12-01T12:08:45.044+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-01T12:08:45.045+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=send_csv_to_kafka, task_id=send_csv_to_kafka, run_id=manual__2024-12-01T12:08:33.490136+00:00, execution_date=20241201T120833, start_date=20241201T120841, end_date=20241201T120845
+[2024-12-01T12:08:45.129+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-12-01T12:08:45.162+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-01T12:08:45.166+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

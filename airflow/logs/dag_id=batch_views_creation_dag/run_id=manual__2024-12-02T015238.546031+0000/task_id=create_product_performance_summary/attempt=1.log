@@ -1,0 +1,33 @@
+[2024-12-02T01:53:12.549+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-02T01:53:12.576+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_views_creation_dag.create_product_performance_summary manual__2024-12-02T01:52:38.546031+00:00 [queued]>
+[2024-12-02T01:53:12.593+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_views_creation_dag.create_product_performance_summary manual__2024-12-02T01:52:38.546031+00:00 [queued]>
+[2024-12-02T01:53:12.594+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2024-12-02T01:53:12.641+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): create_product_performance_summary> on 2024-12-02 01:52:38.546031+00:00
+[2024-12-02T01:53:12.648+0000] {standard_task_runner.py:72} INFO - Started process 2020 to run task
+[2024-12-02T01:53:12.651+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'batch_views_creation_dag', 'create_product_performance_summary', 'manual__2024-12-02T01:52:38.546031+00:00', '--job-id', '125', '--raw', '--subdir', 'DAGS_FOLDER/batch_views.py', '--cfg-path', '/tmp/tmpt94xgx6l']
+[2024-12-02T01:53:12.654+0000] {standard_task_runner.py:105} INFO - Job 125: Subtask create_product_performance_summary
+[2024-12-02T01:53:12.793+0000] {task_command.py:467} INFO - Running <TaskInstance: batch_views_creation_dag.create_product_performance_summary manual__2024-12-02T01:52:38.546031+00:00 [running]> on host 45770b1a429e
+[2024-12-02T01:53:13.123+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='batch_views_creation_dag' AIRFLOW_CTX_TASK_ID='create_product_performance_summary' AIRFLOW_CTX_EXECUTION_DATE='2024-12-02T01:52:38.546031+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-02T01:52:38.546031+00:00'
+[2024-12-02T01:53:13.127+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-02T01:53:13.371+0000] {hive.py:475} INFO - USE `default`
+[2024-12-02T01:53:13.461+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS product_performance_summary
+        STORED AS PARQUET
+        AS
+        SELECT
+            product_line,
+            AVG(gross_margin_percentage) AS avg_margin,
+            SUM(quantity) AS total_quantity_sold
+        FROM
+            sales
+        GROUP BY
+            product_line
+        
+    
+[2024-12-02T01:53:13.486+0000] {batch_views.py:68} INFO - Created product_performance_summary view
+[2024-12-02T01:53:13.505+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-12-02T01:53:13.551+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-02T01:53:13.552+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=batch_views_creation_dag, task_id=create_product_performance_summary, run_id=manual__2024-12-02T01:52:38.546031+00:00, execution_date=20241202T015238, start_date=20241202T015312, end_date=20241202T015313
+[2024-12-02T01:53:13.633+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-12-02T01:53:13.655+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-02T01:53:13.657+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

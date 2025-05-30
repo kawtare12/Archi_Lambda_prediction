@@ -1,0 +1,32 @@
+[2024-12-02T02:02:52.813+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-02T02:02:52.852+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_views_creation_dag.create_payment_method_sales_summary manual__2024-12-02T02:02:30.802013+00:00 [queued]>
+[2024-12-02T02:02:52.876+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_views_creation_dag.create_payment_method_sales_summary manual__2024-12-02T02:02:30.802013+00:00 [queued]>
+[2024-12-02T02:02:52.890+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2024-12-02T02:02:52.965+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): create_payment_method_sales_summary> on 2024-12-02 02:02:30.802013+00:00
+[2024-12-02T02:02:52.972+0000] {standard_task_runner.py:72} INFO - Started process 2213 to run task
+[2024-12-02T02:02:52.977+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'batch_views_creation_dag', 'create_payment_method_sales_summary', 'manual__2024-12-02T02:02:30.802013+00:00', '--job-id', '128', '--raw', '--subdir', 'DAGS_FOLDER/batch_views.py', '--cfg-path', '/tmp/tmp_7r3opl4']
+[2024-12-02T02:02:52.980+0000] {standard_task_runner.py:105} INFO - Job 128: Subtask create_payment_method_sales_summary
+[2024-12-02T02:02:53.151+0000] {task_command.py:467} INFO - Running <TaskInstance: batch_views_creation_dag.create_payment_method_sales_summary manual__2024-12-02T02:02:30.802013+00:00 [running]> on host 45770b1a429e
+[2024-12-02T02:02:53.430+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='batch_views_creation_dag' AIRFLOW_CTX_TASK_ID='create_payment_method_sales_summary' AIRFLOW_CTX_EXECUTION_DATE='2024-12-02T02:02:30.802013+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-02T02:02:30.802013+00:00'
+[2024-12-02T02:02:53.433+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-02T02:02:53.568+0000] {hive.py:475} INFO - USE `default`
+[2024-12-02T02:02:53.660+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS payment_method_sales_summary
+        STORED AS PARQUET
+        AS
+        SELECT
+            payment,
+            SUM(total) AS total_sales,
+            COUNT(DISTINCT invoice_id) AS total_invoices
+        FROM
+            sales
+        GROUP BY
+            payment
+    
+[2024-12-02T02:02:53.691+0000] {batch_views.py:102} INFO - Created payment_method_sales_summary view
+[2024-12-02T02:02:53.715+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-12-02T02:02:53.756+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-02T02:02:53.759+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=batch_views_creation_dag, task_id=create_payment_method_sales_summary, run_id=manual__2024-12-02T02:02:30.802013+00:00, execution_date=20241202T020230, start_date=20241202T020252, end_date=20241202T020253
+[2024-12-02T02:02:53.878+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-12-02T02:02:53.976+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-12-02T02:02:54.012+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

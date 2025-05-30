@@ -1,0 +1,40 @@
+[2024-12-01T20:21:23.958+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-01T20:21:23.990+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: consume_kafka_to_hive.consume_kafka_messages manual__2024-12-01T19:00:08.205422+00:00 [queued]>
+[2024-12-01T20:21:24.012+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: consume_kafka_to_hive.consume_kafka_messages manual__2024-12-01T19:00:08.205422+00:00 [queued]>
+[2024-12-01T20:21:24.013+0000] {taskinstance.py:2866} INFO - Starting attempt 2 of 2
+[2024-12-01T20:21:24.063+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): consume_kafka_messages> on 2024-12-01 19:00:08.205422+00:00
+[2024-12-01T20:21:24.074+0000] {standard_task_runner.py:72} INFO - Started process 352 to run task
+[2024-12-01T20:21:24.084+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'consume_kafka_to_hive', 'consume_kafka_messages', 'manual__2024-12-01T19:00:08.205422+00:00', '--job-id', '62', '--raw', '--subdir', 'DAGS_FOLDER/consume_kafka_to_hive.py', '--cfg-path', '/tmp/tmp0vv86w99']
+[2024-12-01T20:21:24.089+0000] {standard_task_runner.py:105} INFO - Job 62: Subtask consume_kafka_messages
+[2024-12-01T20:21:24.244+0000] {task_command.py:467} INFO - Running <TaskInstance: consume_kafka_to_hive.consume_kafka_messages manual__2024-12-01T19:00:08.205422+00:00 [running]> on host 45770b1a429e
+[2024-12-01T20:21:24.440+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='consume_kafka_to_hive' AIRFLOW_CTX_TASK_ID='consume_kafka_messages' AIRFLOW_CTX_EXECUTION_DATE='2024-12-01T19:00:08.205422+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-01T19:00:08.205422+00:00'
+[2024-12-01T20:21:24.442+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-01T20:21:25.143+0000] {hive.py:475} INFO - USE `default`
+[2024-12-01T20:21:25.499+0000] {hive.py:475} INFO - 
+    CREATE TABLE IF NOT EXISTS sales (
+        id STRING,
+        invoice_id STRING,
+        branch STRING,
+        city STRING,
+        customer_type STRING,
+        gender STRING,
+        product_line STRING,
+        unit_price FLOAT,
+        quantity INT,
+        tax_5_percent FLOAT,
+        total FLOAT,
+        `date` STRING,
+        time STRING,
+        payment STRING,
+        cogs FLOAT,
+        gross_margin_percentage FLOAT,
+        gross_income FLOAT,
+        rating FLOAT
+    ) STORED AS ORC
+    
+[2024-12-01T20:25:38.399+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2024-12-01T20:25:38.409+0000] {process_utils.py:132} INFO - Sending 15 to group 352. PIDs of all processes in the group: [352]
+[2024-12-01T20:25:38.410+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 352
+[2024-12-01T20:25:38.423+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2024-12-01T20:25:38.425+0000] {process_utils.py:132} INFO - Sending 15 to group 352. PIDs of all processes in the group: [352]
+[2024-12-01T20:25:38.426+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 352

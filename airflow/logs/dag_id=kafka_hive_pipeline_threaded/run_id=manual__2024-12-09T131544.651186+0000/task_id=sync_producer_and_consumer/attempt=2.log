@@ -1,0 +1,1318 @@
+[2024-12-09T13:44:15.228+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-09T13:44:15.257+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: kafka_hive_pipeline_threaded.sync_producer_and_consumer manual__2024-12-09T13:15:44.651186+00:00 [queued]>
+[2024-12-09T13:44:15.279+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: kafka_hive_pipeline_threaded.sync_producer_and_consumer manual__2024-12-09T13:15:44.651186+00:00 [queued]>
+[2024-12-09T13:44:15.280+0000] {taskinstance.py:2866} INFO - Starting attempt 2 of 1
+[2024-12-09T13:44:15.328+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): sync_producer_and_consumer> on 2024-12-09 13:15:44.651186+00:00
+[2024-12-09T13:44:15.338+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'kafka_hive_pipeline_threaded', 'sync_producer_and_consumer', 'manual__2024-12-09T13:15:44.651186+00:00', '--job-id', '242', '--raw', '--subdir', 'DAGS_FOLDER/gestion_airflow.py', '--cfg-path', '/tmp/tmpxznc5dx6']
+[2024-12-09T13:44:15.339+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=83) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-12-09T13:44:15.342+0000] {standard_task_runner.py:72} INFO - Started process 98 to run task
+[2024-12-09T13:44:15.342+0000] {standard_task_runner.py:105} INFO - Job 242: Subtask sync_producer_and_consumer
+[2024-12-09T13:44:15.453+0000] {task_command.py:467} INFO - Running <TaskInstance: kafka_hive_pipeline_threaded.sync_producer_and_consumer manual__2024-12-09T13:15:44.651186+00:00 [running]> on host 45770b1a429e
+[2024-12-09T13:44:15.589+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='kafka_hive_pipeline_threaded' AIRFLOW_CTX_TASK_ID='sync_producer_and_consumer' AIRFLOW_CTX_EXECUTION_DATE='2024-12-09T13:15:44.651186+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-09T13:15:44.651186+00:00'
+[2024-12-09T13:44:15.590+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-09T13:44:15.913+0000] {TSocket.py:149} INFO - Could not connect to ('192.168.0.2', 10000)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/thrift/transport/TSocket.py", line 144, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+[2024-12-09T13:44:15.927+0000] {TSocket.py:152} ERROR - Could not connect to any of [('192.168.0.2', 10000)]
+[2024-12-09T13:44:15.928+0000] {logging_mixin.py:190} WARNING - Exception in thread Thread-2 (consume_kafka_to_hive_with_redis):
+[2024-12-09T13:44:15.928+0000] {logging_mixin.py:190} WARNING - Traceback (most recent call last):
+[2024-12-09T13:44:15.930+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+[2024-12-09T13:44:15.932+0000] {logging_mixin.py:190} WARNING -     self.run()
+[2024-12-09T13:44:15.932+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/threading.py", line 1012, in run
+[2024-12-09T13:44:15.950+0000] {logging_mixin.py:190} WARNING -     self._target(*self._args, **self._kwargs)
+[2024-12-09T13:44:15.956+0000] {logging_mixin.py:190} WARNING -   File "/opt/airflow/dags/kafka_to_hive_with_redis.py", line 35, in consume_kafka_to_hive_with_redis
+[2024-12-09T13:44:15.970+0000] {csv_to_kafka_with_redis.py:51} INFO - Loaded CSV Data:
+    Invoice ID Branch       City  ... gross margin percentage gross income Rating
+0  750-67-8428      A     Yangon  ...                4.761905      26.1415    9.1
+1  226-31-3081      C  Naypyitaw  ...                4.761905       3.8200    9.6
+2  631-41-3108      A     Yangon  ...                4.761905      16.2155    7.4
+3  123-19-1176      A     Yangon  ...                4.761905      23.2880    8.4
+4  373-73-7910      A     Yangon  ...                4.761905      30.2085    5.3
+
+[5 rows x 17 columns]
+[2024-12-09T13:44:15.972+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '40895cf4-17c3-4c7f-9e29-c1c87289a389', 'invoice_id': '750-67-8428', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 74.69, 'quantity': 7, 'tax_5_percent': 26.1415, 'total': 548.9715, 'date': '1/5/2019', 'time': '13:08', 'payment': 'Ewallet', 'cogs': 522.83, 'gross_margin_percentage': 4.761904762, 'gross_income': 26.1415, 'rating': 9.1}
+[2024-12-09T13:44:15.977+0000] {logging_mixin.py:190} WARNING -     conn = hive.Connection(host='hive-server', port=10000, username='hive', database='default')
+[2024-12-09T13:44:15.979+0000] {logging_mixin.py:190} WARNING -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-09T13:44:15.980+0000] {logging_mixin.py:190} WARNING -   File "/home/airflow/.local/lib/python3.12/site-packages/pyhive/hive.py", line 269, in __init__
+[2024-12-09T13:44:15.982+0000] {logging_mixin.py:190} WARNING -     self._transport.open()
+[2024-12-09T13:44:15.983+0000] {logging_mixin.py:190} WARNING -   File "/home/airflow/.local/lib/python3.12/site-packages/thrift_sasl/__init__.py", line 74, in open
+[2024-12-09T13:44:15.985+0000] {logging_mixin.py:190} WARNING -     self._trans.open()
+[2024-12-09T13:44:15.985+0000] {logging_mixin.py:190} WARNING -   File "/home/airflow/.local/lib/python3.12/site-packages/thrift/transport/TSocket.py", line 153, in open
+[2024-12-09T13:44:15.987+0000] {logging_mixin.py:190} WARNING -     raise TTransportException(type=TTransportException.NOT_OPEN, message=msg)
+[2024-12-09T13:44:15.988+0000] {logging_mixin.py:190} WARNING - thrift.transport.TTransport.TTransportException: Could not connect to any of [('192.168.0.2', 10000)]
+[2024-12-09T13:44:23.982+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f53ea760740>: Failed to resolve 'schema-registry' ([Errno -3] Temporary failure in name resolution)"))"}
+[2024-12-09T13:44:23.983+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '390076a4-8c3d-47d1-9281-244599231407', 'invoice_id': '226-31-3081', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 15.28, 'quantity': 5, 'tax_5_percent': 3.82, 'total': 80.22, 'date': '3/8/2019', 'time': '10:29', 'payment': 'Cash', 'cogs': 76.4, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.82, 'rating': 9.6}
+[2024-12-09T13:44:23.985+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea7384d0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:23.986+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '95e1860b-d8e3-4601-a1bd-58078ca501ba', 'invoice_id': '631-41-3108', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 46.33, 'quantity': 7, 'tax_5_percent': 16.2155, 'total': 340.5255, 'date': '3/3/2019', 'time': '13:23', 'payment': 'Credit card', 'cogs': 324.31, 'gross_margin_percentage': 4.761904762, 'gross_income': 16.2155, 'rating': 7.4}
+[2024-12-09T13:44:23.988+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea738110>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:23.989+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '2125a1fe-f6ca-41f4-90bb-90439328e0d7', 'invoice_id': '123-19-1176', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 58.22, 'quantity': 8, 'tax_5_percent': 23.288, 'total': 489.048, 'date': '1/27/2019', 'time': '20:33', 'payment': 'Ewallet', 'cogs': 465.76, 'gross_margin_percentage': 4.761904762, 'gross_income': 23.288, 'rating': 8.4}
+[2024-12-09T13:44:23.991+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea70f830>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:23.992+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '461d2d10-aeb7-48f0-9300-c5bc755d05a4', 'invoice_id': '373-73-7910', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 86.31, 'quantity': 7, 'tax_5_percent': 30.2085, 'total': 634.3785, 'date': '2/8/2019', 'time': '10:37', 'payment': 'Ewallet', 'cogs': 604.17, 'gross_margin_percentage': 4.761904762, 'gross_income': 30.2085, 'rating': 5.3}
+[2024-12-09T13:44:23.993+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea70f410>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:23.994+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'f7fb2838-f205-4517-bd8f-67339047d188', 'invoice_id': '699-14-3026', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 85.39, 'quantity': 7, 'tax_5_percent': 29.8865, 'total': 627.6165, 'date': '3/25/2019', 'time': '18:30', 'payment': 'Ewallet', 'cogs': 597.73, 'gross_margin_percentage': 4.761904762, 'gross_income': 29.8865, 'rating': 4.1}
+[2024-12-09T13:44:23.996+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea70f6b0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:23.997+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'fc3db94b-0fa5-4f1a-9c43-2c00f0a64311', 'invoice_id': '355-53-5943', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 68.84, 'quantity': 6, 'tax_5_percent': 20.652, 'total': 433.692, 'date': '2/25/2019', 'time': '14:36', 'payment': 'Ewallet', 'cogs': 413.04, 'gross_margin_percentage': 4.761904762, 'gross_income': 20.652, 'rating': 5.8}
+[2024-12-09T13:44:23.999+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea77baa0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:23.999+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '5fc29002-37c8-4db5-a595-044a32bbfedb', 'invoice_id': '315-22-5665', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 73.56, 'quantity': 10, 'tax_5_percent': 36.78, 'total': 772.38, 'date': '2/24/2019', 'time': '11:38', 'payment': 'Ewallet', 'cogs': 735.6, 'gross_margin_percentage': 4.761904762, 'gross_income': 36.78, 'rating': 8.0}
+[2024-12-09T13:44:24.002+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78d820>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.003+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '15a8b293-911d-4bc5-bfe7-f8a53dc83a86', 'invoice_id': '665-32-9167', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 36.26, 'quantity': 2, 'tax_5_percent': 3.626, 'total': 76.146, 'date': '1/10/2019', 'time': '17:15', 'payment': 'Credit card', 'cogs': 72.52, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.626, 'rating': 7.2}
+[2024-12-09T13:44:24.006+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78d1f0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.007+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '10e8d413-cf1d-4063-a258-32ed261aef35', 'invoice_id': '692-92-5582', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 54.84, 'quantity': 3, 'tax_5_percent': 8.226, 'total': 172.746, 'date': '2/20/2019', 'time': '13:27', 'payment': 'Credit card', 'cogs': 164.52, 'gross_margin_percentage': 4.761904762, 'gross_income': 8.226, 'rating': 5.9}
+[2024-12-09T13:44:24.009+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea70f890>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.009+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '3babfc2a-bb85-4fbb-a431-ee518f75d6e7', 'invoice_id': '351-62-0822', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Fashion accessories', 'unit_price': 14.48, 'quantity': 4, 'tax_5_percent': 2.896, 'total': 60.816, 'date': '2/6/2019', 'time': '18:07', 'payment': 'Ewallet', 'cogs': 57.92, 'gross_margin_percentage': 4.761904762, 'gross_income': 2.896, 'rating': 4.5}
+[2024-12-09T13:44:24.011+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea738560>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.012+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '8ad018f1-1cf6-482c-b1e0-5f1f019072e2', 'invoice_id': '529-56-3974', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 25.51, 'quantity': 4, 'tax_5_percent': 5.102, 'total': 107.142, 'date': '3/9/2019', 'time': '17:03', 'payment': 'Cash', 'cogs': 102.04, 'gross_margin_percentage': 4.761904762, 'gross_income': 5.102, 'rating': 6.8}
+[2024-12-09T13:44:24.014+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea77b950>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.015+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'a9156be6-d1af-44f8-a2ea-090b6628ebe3', 'invoice_id': '365-64-0515', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 46.95, 'quantity': 5, 'tax_5_percent': 11.7375, 'total': 246.4875, 'date': '2/12/2019', 'time': '10:25', 'payment': 'Ewallet', 'cogs': 234.75, 'gross_margin_percentage': 4.761904762, 'gross_income': 11.7375, 'rating': 7.1}
+[2024-12-09T13:44:24.017+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78d580>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.018+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '5a50ccb2-a870-4fe8-95d5-93400146583c', 'invoice_id': '252-56-2699', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Food and beverages', 'unit_price': 43.19, 'quantity': 10, 'tax_5_percent': 21.595, 'total': 453.495, 'date': '2/7/2019', 'time': '16:48', 'payment': 'Ewallet', 'cogs': 431.9, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.595, 'rating': 8.2}
+[2024-12-09T13:44:24.020+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78ce90>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.021+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'd014811c-ccca-49ad-8c59-711b9006e472', 'invoice_id': '829-34-3910', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 71.38, 'quantity': 10, 'tax_5_percent': 35.69, 'total': 749.49, 'date': '3/29/2019', 'time': '19:21', 'payment': 'Cash', 'cogs': 713.8, 'gross_margin_percentage': 4.761904762, 'gross_income': 35.69, 'rating': 5.7}
+[2024-12-09T13:44:24.023+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78c6e0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.024+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'fa02c161-36ff-46cf-88be-0abfa0d3a011', 'invoice_id': '299-46-1805', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 93.72, 'quantity': 6, 'tax_5_percent': 28.116, 'total': 590.436, 'date': '1/15/2019', 'time': '16:19', 'payment': 'Cash', 'cogs': 562.32, 'gross_margin_percentage': 4.761904762, 'gross_income': 28.116, 'rating': 4.5}
+[2024-12-09T13:44:24.025+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78dbe0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.026+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'af39431e-7d9a-4e3d-a1e8-f432dca455b5', 'invoice_id': '656-95-9349', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 68.93, 'quantity': 7, 'tax_5_percent': 24.1255, 'total': 506.6355, 'date': '3/11/2019', 'time': '11:03', 'payment': 'Credit card', 'cogs': 482.51, 'gross_margin_percentage': 4.761904762, 'gross_income': 24.1255, 'rating': 4.6}
+[2024-12-09T13:44:24.028+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78e390>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.029+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '6c2a454d-51d6-4e52-be52-5b892cfba050', 'invoice_id': '765-26-6951', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 72.61, 'quantity': 6, 'tax_5_percent': 21.783, 'total': 457.443, 'date': '1/1/2019', 'time': '10:39', 'payment': 'Credit card', 'cogs': 435.66, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.783, 'rating': 6.9}
+[2024-12-09T13:44:24.030+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78ea20>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.031+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'f0400181-a062-4b15-80e5-26d16088dc21', 'invoice_id': '329-62-1586', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Food and beverages', 'unit_price': 54.67, 'quantity': 3, 'tax_5_percent': 8.2005, 'total': 172.2105, 'date': '1/21/2019', 'time': '18:00', 'payment': 'Credit card', 'cogs': 164.01, 'gross_margin_percentage': 4.761904762, 'gross_income': 8.2005, 'rating': 8.6}
+[2024-12-09T13:44:24.033+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78ef90>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.033+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '3d717c7a-5fb7-4cf0-a514-0bf63961e47f', 'invoice_id': '319-50-3348', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 40.3, 'quantity': 2, 'tax_5_percent': 4.03, 'total': 84.63, 'date': '3/11/2019', 'time': '15:30', 'payment': 'Ewallet', 'cogs': 80.6, 'gross_margin_percentage': 4.761904762, 'gross_income': 4.03, 'rating': 4.4}
+[2024-12-09T13:44:24.036+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78f590>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.037+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '439d812e-da04-41d1-b552-ac36111049a0', 'invoice_id': '300-71-4605', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 86.04, 'quantity': 5, 'tax_5_percent': 21.51, 'total': 451.71, 'date': '2/25/2019', 'time': '11:24', 'payment': 'Ewallet', 'cogs': 430.2, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.51, 'rating': 4.8}
+[2024-12-09T13:44:24.039+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53c22dd9a0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.040+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'dcf0b2a5-4c20-43b8-a4d5-74fa05f0bfae', 'invoice_id': '371-85-5789', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 87.98, 'quantity': 3, 'tax_5_percent': 13.197, 'total': 277.137, 'date': '3/5/2019', 'time': '10:40', 'payment': 'Ewallet', 'cogs': 263.94, 'gross_margin_percentage': 4.761904762, 'gross_income': 13.197, 'rating': 5.1}
+[2024-12-09T13:44:24.042+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea738740>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.043+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '4f6d2a81-026e-4563-934f-d0ba0184b5bb', 'invoice_id': '273-16-6619', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 33.2, 'quantity': 2, 'tax_5_percent': 3.32, 'total': 69.72, 'date': '3/15/2019', 'time': '12:20', 'payment': 'Credit card', 'cogs': 66.4, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.32, 'rating': 4.4}
+[2024-12-09T13:44:24.045+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea70f230>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.046+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'bdab4d3f-85a0-4a6d-ad5f-b55f7f15890c', 'invoice_id': '636-48-8204', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 34.56, 'quantity': 5, 'tax_5_percent': 8.64, 'total': 181.44, 'date': '2/17/2019', 'time': '11:15', 'payment': 'Ewallet', 'cogs': 172.8, 'gross_margin_percentage': 4.761904762, 'gross_income': 8.64, 'rating': 9.9}
+[2024-12-09T13:44:24.048+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78eb10>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.049+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'a2cb9280-366d-461f-b46e-9e5a7bd5e10c', 'invoice_id': '549-59-1358', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 88.63, 'quantity': 3, 'tax_5_percent': 13.2945, 'total': 279.1845, 'date': '3/2/2019', 'time': '17:36', 'payment': 'Ewallet', 'cogs': 265.89, 'gross_margin_percentage': 4.761904762, 'gross_income': 13.2945, 'rating': 6.0}
+[2024-12-09T13:44:24.051+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78e330>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.052+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '88cecd14-c2f3-4ffc-8e9e-e199ca377f9a', 'invoice_id': '227-03-5010', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 52.59, 'quantity': 8, 'tax_5_percent': 21.036, 'total': 441.756, 'date': '3/22/2019', 'time': '19:20', 'payment': 'Credit card', 'cogs': 420.72, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.036, 'rating': 8.5}
+[2024-12-09T13:44:24.054+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78c740>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.054+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '65a4eb54-aab8-4a40-a35b-ede843c9ad6c', 'invoice_id': '649-29-6775', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Fashion accessories', 'unit_price': 33.52, 'quantity': 1, 'tax_5_percent': 1.676, 'total': 35.196, 'date': '2/8/2019', 'time': '15:31', 'payment': 'Cash', 'cogs': 33.52, 'gross_margin_percentage': 4.761904762, 'gross_income': 1.676, 'rating': 6.7}
+[2024-12-09T13:44:24.056+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78cf20>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.057+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '7b1f91be-e54a-4b5d-bb50-1052a31cd5ef', 'invoice_id': '189-17-4241', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Fashion accessories', 'unit_price': 87.67, 'quantity': 2, 'tax_5_percent': 8.767, 'total': 184.107, 'date': '3/10/2019', 'time': '12:17', 'payment': 'Credit card', 'cogs': 175.34, 'gross_margin_percentage': 4.761904762, 'gross_income': 8.767, 'rating': 7.7}
+[2024-12-09T13:44:24.058+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78f8f0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.059+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '3e357c24-2f23-4603-92d5-b4b0dbc4e890', 'invoice_id': '145-94-9061', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 88.36, 'quantity': 5, 'tax_5_percent': 22.09, 'total': 463.89, 'date': '1/25/2019', 'time': '19:48', 'payment': 'Cash', 'cogs': 441.8, 'gross_margin_percentage': 4.761904762, 'gross_income': 22.09, 'rating': 9.6}
+[2024-12-09T13:44:24.061+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78ff20>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.062+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'bf058bcf-645b-4b7d-bbf9-cefeb39bf384', 'invoice_id': '848-62-7243', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 24.89, 'quantity': 9, 'tax_5_percent': 11.2005, 'total': 235.2105, 'date': '3/15/2019', 'time': '15:36', 'payment': 'Cash', 'cogs': 224.01, 'gross_margin_percentage': 4.761904762, 'gross_income': 11.2005, 'rating': 7.4}
+[2024-12-09T13:44:24.063+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea7bc2f0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.064+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'a44df230-a06c-44f2-93ad-41f229b4f696', 'invoice_id': '871-79-8483', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Fashion accessories', 'unit_price': 94.13, 'quantity': 5, 'tax_5_percent': 23.5325, 'total': 494.1825, 'date': '2/25/2019', 'time': '19:39', 'payment': 'Credit card', 'cogs': 470.65, 'gross_margin_percentage': 4.761904762, 'gross_income': 23.5325, 'rating': 4.8}
+[2024-12-09T13:44:24.066+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea7bc890>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.067+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '94283255-29a2-4ba2-a99e-cbff9da52491', 'invoice_id': '149-71-6266', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 78.07, 'quantity': 9, 'tax_5_percent': 35.1315, 'total': 737.7615, 'date': '1/28/2019', 'time': '12:43', 'payment': 'Cash', 'cogs': 702.63, 'gross_margin_percentage': 4.761904762, 'gross_income': 35.1315, 'rating': 4.5}
+[2024-12-09T13:44:24.069+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53f30f6ae0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.070+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'a8e9a594-a23f-49cf-9315-0207e6b0a580', 'invoice_id': '640-49-2076', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 83.78, 'quantity': 8, 'tax_5_percent': 33.512, 'total': 703.752, 'date': '1/10/2019', 'time': '14:49', 'payment': 'Cash', 'cogs': 670.24, 'gross_margin_percentage': 4.761904762, 'gross_income': 33.512, 'rating': 5.1}
+[2024-12-09T13:44:24.071+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea70f290>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.072+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '422fe24f-1f8c-4d3d-b954-322b86fa4dab', 'invoice_id': '595-11-5460', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 96.58, 'quantity': 2, 'tax_5_percent': 9.658, 'total': 202.818, 'date': '3/15/2019', 'time': '10:12', 'payment': 'Credit card', 'cogs': 193.16, 'gross_margin_percentage': 4.761904762, 'gross_income': 9.658, 'rating': 5.1}
+[2024-12-09T13:44:24.074+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78d9d0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.074+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '133a5c92-7559-4c8a-becf-1115597514ad', 'invoice_id': '183-56-6882', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 99.42, 'quantity': 4, 'tax_5_percent': 19.884, 'total': 417.564, 'date': '2/6/2019', 'time': '10:42', 'payment': 'Ewallet', 'cogs': 397.68, 'gross_margin_percentage': 4.761904762, 'gross_income': 19.884, 'rating': 7.5}
+[2024-12-09T13:44:24.076+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78c800>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.077+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '8cef1d11-2bd6-4dbb-ab87-eb74ad76f71e', 'invoice_id': '232-16-2483', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 68.12, 'quantity': 1, 'tax_5_percent': 3.406, 'total': 71.526, 'date': '1/7/2019', 'time': '12:28', 'payment': 'Ewallet', 'cogs': 68.12, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.406, 'rating': 6.8}
+[2024-12-09T13:44:24.079+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78d940>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.080+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '02a8092d-5d7a-462c-96fc-cdd6603709f3', 'invoice_id': '129-29-8530', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 62.62, 'quantity': 5, 'tax_5_percent': 15.655, 'total': 328.755, 'date': '3/10/2019', 'time': '19:15', 'payment': 'Ewallet', 'cogs': 313.1, 'gross_margin_percentage': 4.761904762, 'gross_income': 15.655, 'rating': 7.0}
+[2024-12-09T13:44:24.081+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78dca0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.082+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '43c157a0-e1e8-40b2-941d-fe4ee25de7ca', 'invoice_id': '272-65-1806', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 60.88, 'quantity': 9, 'tax_5_percent': 27.396, 'total': 575.316, 'date': '1/15/2019', 'time': '17:17', 'payment': 'Ewallet', 'cogs': 547.92, 'gross_margin_percentage': 4.761904762, 'gross_income': 27.396, 'rating': 4.7}
+[2024-12-09T13:44:24.084+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78e510>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.084+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '54bd1e39-08c0-49df-9413-ad420140f10e', 'invoice_id': '333-73-7901', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 54.92, 'quantity': 8, 'tax_5_percent': 21.968, 'total': 461.328, 'date': '3/23/2019', 'time': '13:24', 'payment': 'Ewallet', 'cogs': 439.36, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.968, 'rating': 7.6}
+[2024-12-09T13:44:24.086+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78f4a0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.086+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'caab27df-dde8-4fe7-8297-c731246cefc6', 'invoice_id': '777-82-7220', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 30.12, 'quantity': 8, 'tax_5_percent': 12.048, 'total': 253.008, 'date': '3/3/2019', 'time': '13:01', 'payment': 'Cash', 'cogs': 240.96, 'gross_margin_percentage': 4.761904762, 'gross_income': 12.048, 'rating': 7.7}
+[2024-12-09T13:44:24.088+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea7bc3b0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.089+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '1c6a893e-59fe-4b93-b6cc-7a67b74bcdde', 'invoice_id': '280-35-5823', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 86.72, 'quantity': 1, 'tax_5_percent': 4.336, 'total': 91.056, 'date': '1/17/2019', 'time': '18:45', 'payment': 'Ewallet', 'cogs': 86.72, 'gross_margin_percentage': 4.761904762, 'gross_income': 4.336, 'rating': 7.9}
+[2024-12-09T13:44:24.090+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea7bcd10>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.091+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'd72bcaa0-153d-4c11-9dc2-53bc8d8161f0', 'invoice_id': '554-53-8700', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 56.11, 'quantity': 2, 'tax_5_percent': 5.611, 'total': 117.831, 'date': '2/2/2019', 'time': '10:11', 'payment': 'Cash', 'cogs': 112.22, 'gross_margin_percentage': 4.761904762, 'gross_income': 5.611, 'rating': 6.3}
+[2024-12-09T13:44:24.093+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea7bd280>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.094+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '5a283dae-590e-47fc-9648-1ac183f6b24d', 'invoice_id': '354-25-5821', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 69.12, 'quantity': 6, 'tax_5_percent': 20.736, 'total': 435.456, 'date': '2/8/2019', 'time': '13:03', 'payment': 'Cash', 'cogs': 414.72, 'gross_margin_percentage': 4.761904762, 'gross_income': 20.736, 'rating': 5.6}
+[2024-12-09T13:44:24.096+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78e840>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.096+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'f7fb488a-85e6-4733-b53e-4cb983878173', 'invoice_id': '228-96-1411', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 98.7, 'quantity': 8, 'tax_5_percent': 39.48, 'total': 829.08, 'date': '3/4/2019', 'time': '20:39', 'payment': 'Cash', 'cogs': 789.6, 'gross_margin_percentage': 4.761904762, 'gross_income': 39.48, 'rating': 7.6}
+[2024-12-09T13:44:24.098+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78c740>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.099+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'c0421b7b-6b57-436e-b49d-6fed3a962e82', 'invoice_id': '617-15-4209', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 15.37, 'quantity': 2, 'tax_5_percent': 1.537, 'total': 32.277, 'date': '3/16/2019', 'time': '19:47', 'payment': 'Cash', 'cogs': 30.74, 'gross_margin_percentage': 4.761904762, 'gross_income': 1.537, 'rating': 7.2}
+[2024-12-09T13:44:24.100+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea78ff50>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.101+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '658988fb-a633-40b8-9e10-c173f60246a7', 'invoice_id': '132-32-9879', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 93.96, 'quantity': 4, 'tax_5_percent': 18.792, 'total': 394.632, 'date': '3/9/2019', 'time': '18:00', 'payment': 'Cash', 'cogs': 375.84, 'gross_margin_percentage': 4.761904762, 'gross_income': 18.792, 'rating': 9.5}
+[2024-12-09T13:44:24.103+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea70fe30>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.103+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'a0293c29-4b6c-4a32-a580-c3e9722496a8', 'invoice_id': '370-41-7321', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 56.69, 'quantity': 9, 'tax_5_percent': 25.5105, 'total': 535.7205, 'date': '2/27/2019', 'time': '17:24', 'payment': 'Credit card', 'cogs': 510.21, 'gross_margin_percentage': 4.761904762, 'gross_income': 25.5105, 'rating': 8.4}
+[2024-12-09T13:44:24.105+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea70f290>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.105+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '08a69e9b-9725-48bd-b31a-bfa88174fb11', 'invoice_id': '727-46-3608', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 20.01, 'quantity': 9, 'tax_5_percent': 9.0045, 'total': 189.0945, 'date': '2/6/2019', 'time': '15:47', 'payment': 'Ewallet', 'cogs': 180.09, 'gross_margin_percentage': 4.761904762, 'gross_income': 9.0045, 'rating': 4.1}
+[2024-12-09T13:44:24.107+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea77b8c0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.108+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '440f0906-4a3f-4556-8473-080e15eb5451', 'invoice_id': '669-54-1719', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 18.93, 'quantity': 6, 'tax_5_percent': 5.679, 'total': 119.259, 'date': '2/10/2019', 'time': '12:45', 'payment': 'Credit card', 'cogs': 113.58, 'gross_margin_percentage': 4.761904762, 'gross_income': 5.679, 'rating': 8.1}
+[2024-12-09T13:44:24.110+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea760740>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.111+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '69193a40-d4ae-4e66-8f25-c1961a252920', 'invoice_id': '574-22-5561', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Fashion accessories', 'unit_price': 82.63, 'quantity': 10, 'tax_5_percent': 41.315, 'total': 867.615, 'date': '3/19/2019', 'time': '17:08', 'payment': 'Ewallet', 'cogs': 826.3, 'gross_margin_percentage': 4.761904762, 'gross_income': 41.315, 'rating': 7.9}
+[2024-12-09T13:44:24.112+0000] {csv_to_kafka_with_redis.py:91} ERROR - Error producing message: KafkaError{code=_VALUE_SERIALIZATION,val=-161,str="HTTPConnectionPool(host='schema-registry', port=8081): Max retries exceeded with url: /subjects/batch-topic-value/versions?normalize=False (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f53ea7bd3d0>: Failed to establish a new connection: [Errno 111] Connection refused'))"}
+[2024-12-09T13:44:24.113+0000] {csv_to_kafka_with_redis.py:95} INFO - Batch 1 envoyé à Kafka.
+[2024-12-09T13:44:44.120+0000] {csv_to_kafka_with_redis.py:99} INFO - Redis batch status: READY
+[2024-12-09T13:54:16.047+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.047+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.048+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.048+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.049+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.049+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.050+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.050+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.050+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.051+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.051+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.052+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.052+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.052+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.053+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.053+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.053+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.053+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.054+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.054+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.054+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.055+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.055+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.055+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.056+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.056+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.056+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.057+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.057+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.058+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.058+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.058+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.059+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.059+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.060+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.060+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.060+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.060+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.061+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.061+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.061+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.062+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.062+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.062+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.063+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.063+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.063+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.064+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.064+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.064+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.065+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.065+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.065+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.066+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.066+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.066+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.067+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.067+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.067+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.068+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.068+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.068+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.069+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.069+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.069+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.070+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.070+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.070+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.071+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.071+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.071+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.072+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.072+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.072+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.073+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.073+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.073+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.074+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.074+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.074+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.074+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.075+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.075+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.075+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.076+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.076+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.076+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.077+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.077+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.077+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.078+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.078+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.079+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.079+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.080+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.080+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.081+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.081+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.081+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.082+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.082+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.083+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.083+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.083+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.084+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.084+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.084+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.085+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.085+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.086+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.086+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.086+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.087+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.087+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.087+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.087+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.088+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.088+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.088+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.089+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.089+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.089+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.090+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.090+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.090+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.090+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.091+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.091+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.091+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.092+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.092+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.092+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.092+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.093+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.093+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.093+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.093+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.094+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.094+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.094+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.094+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.095+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.095+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.095+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.096+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.096+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.097+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.097+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.097+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.098+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.098+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.098+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.098+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.099+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.099+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.099+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.100+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.100+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.100+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.100+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.101+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.101+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.101+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.101+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.102+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.102+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.102+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.102+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.103+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.103+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.104+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.104+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.104+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.104+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.105+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.105+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.105+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.106+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.106+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.106+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.106+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.107+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.107+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.107+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.108+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.108+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.108+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.108+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.109+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.109+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.109+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.109+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.110+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.110+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.110+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.111+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.111+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.111+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.111+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.112+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.112+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.112+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.112+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.113+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.113+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.113+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.113+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.114+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.114+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.114+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.115+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.115+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.115+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.115+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.116+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.116+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.116+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.117+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.117+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.117+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.118+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.118+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.118+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.118+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.119+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.119+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.119+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.119+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.120+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.120+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.120+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.120+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.121+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.121+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.121+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.121+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.121+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.122+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.122+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.122+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.122+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.123+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.123+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.123+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.123+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.124+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.124+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.124+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.125+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.125+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.125+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.125+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.126+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.126+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.126+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.126+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.127+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.127+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.127+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.128+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.128+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.128+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.128+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.129+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.129+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.129+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.130+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.130+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.130+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.130+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.131+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.131+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.131+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.131+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.132+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.132+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.132+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.132+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.133+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.133+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.133+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.134+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.134+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.134+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.134+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.135+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.135+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.135+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.136+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.136+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.137+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.137+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.137+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.138+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.138+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.138+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.139+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.139+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.139+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.140+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.140+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.140+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.141+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.141+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.141+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.142+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.142+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.142+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.143+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.143+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.143+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.143+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.144+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.144+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.144+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.145+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.145+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.145+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.145+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.146+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.146+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.146+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.147+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.147+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.148+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.148+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.148+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.149+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.149+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.149+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.149+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.150+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.150+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.150+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.150+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.151+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.151+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.151+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.151+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.152+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.152+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.152+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.152+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.153+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.153+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.153+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.153+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.153+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.154+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.154+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.154+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.154+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.155+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.155+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.155+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.155+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.155+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.156+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.156+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.156+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.157+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.157+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.157+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.157+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.158+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.158+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.158+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.158+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.158+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.159+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.159+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.159+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.159+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.160+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.160+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.160+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.160+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.160+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.160+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.161+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.161+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.161+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.161+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.161+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.162+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.162+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.162+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.162+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.162+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.163+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.163+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.163+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.163+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.163+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.163+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.164+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.164+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.164+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.164+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.165+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.165+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.165+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.165+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.165+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.165+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.166+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.166+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.166+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.166+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.166+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.167+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.167+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.167+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.167+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.167+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.167+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.168+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.168+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.168+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.168+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.168+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.169+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.169+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.169+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.169+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.169+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.170+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.170+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.170+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.170+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.170+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.170+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.171+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.171+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.171+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.171+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.171+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.171+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.172+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.172+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.172+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.172+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.172+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.173+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.173+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.173+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.173+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.173+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.174+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.174+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.174+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.174+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.174+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.174+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.175+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.175+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.175+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.176+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.176+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.176+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.177+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.177+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.177+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.178+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.178+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.178+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.179+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.179+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.179+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.179+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.180+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.180+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.180+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.180+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.180+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.181+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.181+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.181+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.181+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.181+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.182+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.182+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.182+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.182+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.182+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.183+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.183+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.183+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.183+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.184+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.184+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.184+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.184+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.184+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.184+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.185+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.185+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.185+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.185+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.185+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.186+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.186+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.186+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.186+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.186+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.187+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.187+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.187+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.187+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.187+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.188+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.188+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.188+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.188+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.189+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.189+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.189+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.189+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.190+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.190+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.190+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.191+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.191+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.191+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.191+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.192+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.192+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.192+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.192+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.193+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.193+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.193+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.193+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.193+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.193+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.194+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.194+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.194+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.194+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.194+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.195+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.195+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.195+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.195+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.195+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.196+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.196+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.196+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.196+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.196+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.196+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.197+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.197+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.197+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.197+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.198+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.198+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.198+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.198+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.198+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.199+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.199+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.199+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.199+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.200+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.200+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.200+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.200+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.201+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.201+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.201+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.201+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.201+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.201+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.202+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.202+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.202+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.202+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.202+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.203+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.203+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.203+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.203+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.203+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.204+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.204+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.204+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.204+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.204+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.205+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.205+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.205+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.205+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.205+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.205+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.206+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.206+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.206+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.206+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.206+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.207+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.207+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.207+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.207+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.207+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.207+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.208+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.208+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.208+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.208+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.208+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.208+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.209+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.209+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.209+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.209+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.209+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.210+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.210+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.210+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.211+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.211+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.211+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.211+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.211+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.212+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.212+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.212+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.213+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.213+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.213+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.213+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.213+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.214+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.214+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.214+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.214+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.214+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.215+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.215+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.215+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.215+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.215+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.216+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.216+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.216+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.216+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.216+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.217+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.217+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.217+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.217+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.217+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.218+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.218+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.218+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.218+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.218+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.219+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.219+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.219+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.219+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.219+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.219+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.220+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.220+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.220+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.220+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.221+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.221+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.221+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.221+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.222+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.222+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.222+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.222+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.222+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.223+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.223+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.223+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.223+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.223+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.224+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.224+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.224+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.224+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.224+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.225+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.225+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.225+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.225+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.226+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.226+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.226+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.226+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.226+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.227+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.227+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.227+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.227+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.227+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.228+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.228+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.228+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.228+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.228+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.229+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.229+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.229+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.229+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.229+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.230+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.230+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.230+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.230+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.230+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.231+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.231+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.231+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.231+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.231+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.232+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.232+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.232+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.232+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.233+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.233+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.233+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.233+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.233+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.234+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.234+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.234+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.234+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.234+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.235+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.235+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.235+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.235+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.235+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.236+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.236+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.236+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.236+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.237+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.237+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.237+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.237+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.237+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.237+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.238+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.238+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.238+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.238+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.238+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.239+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.239+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.239+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.239+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.240+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.240+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.240+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.240+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.241+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.241+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.241+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.241+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.241+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.242+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.242+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.242+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.242+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.242+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.243+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.243+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.243+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.243+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.244+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.244+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.244+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.244+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.244+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.245+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.245+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.245+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.245+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.245+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.246+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.246+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.246+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.246+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.246+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.247+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.247+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.247+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.247+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.247+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.247+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.248+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.248+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.248+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.248+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.249+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.249+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.249+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.249+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.250+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.250+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.250+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.250+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.250+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.251+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.251+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.251+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.251+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.252+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.252+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.252+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.252+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.252+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.253+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.253+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.253+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.253+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.254+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.254+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.254+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.254+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.254+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.255+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.255+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.255+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.255+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.255+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.256+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.256+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.256+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.256+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.256+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.257+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.257+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.257+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.257+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.257+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.258+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.258+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.258+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.258+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.258+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.259+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.259+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.259+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.259+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.259+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.260+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.260+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.260+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.260+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.260+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.261+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.261+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.261+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.261+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.262+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.262+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.262+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.262+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.262+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.263+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.263+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.263+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.263+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.263+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.264+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.264+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.264+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.264+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.264+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.265+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.265+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.265+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.265+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.265+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.266+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.266+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.266+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.266+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.266+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.267+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.267+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.267+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.267+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.267+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.268+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.268+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.268+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.268+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.268+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.269+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.269+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.269+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.269+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.269+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.270+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.270+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.270+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.270+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.271+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.271+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.271+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.271+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.272+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.272+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.272+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.272+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.272+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.273+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.273+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.273+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.273+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.274+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.274+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.274+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.274+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.274+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.275+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.275+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.275+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.275+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.275+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.276+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.276+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.276+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.276+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.276+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.277+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.277+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.277+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.277+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.277+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.278+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.278+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.278+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.278+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.279+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.279+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.279+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.279+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.279+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.280+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.280+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.280+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.280+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.281+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.281+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.281+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.281+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.282+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.282+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.282+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.282+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.282+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.283+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.283+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.283+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.283+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.283+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.284+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.284+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.284+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.284+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.284+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.285+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.285+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.285+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.285+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.286+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.286+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.286+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.286+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.286+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.287+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.287+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.287+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.287+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.287+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.288+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.288+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.288+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.288+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.288+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.289+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.289+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.289+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.289+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.289+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.290+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.290+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.290+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.290+0000] {dag_streaming.py:16} INFO - Message delivered to stream-topic [0]
+[2024-12-09T13:54:16.291+0000] {dag_streaming.py:67} INFO - Toutes les données ont été publiées avec succès.
+[2024-12-09T13:58:51.415+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:58:51.416+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:58:56.514+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:58:56.515+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:01.577+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:01.578+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:06.673+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:06.674+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:11.715+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:11.716+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:16.800+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:16.801+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:21.857+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:21.858+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:26.963+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:26.964+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:32.053+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:32.056+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:37.149+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:37.150+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:42.209+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:42.210+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:47.370+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:47.371+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:52.431+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:52.432+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T13:59:57.550+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T13:59:57.551+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:02.649+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:02.649+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:07.711+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:07.713+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:12.802+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:12.804+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:17.887+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:17.888+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:23.035+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:23.037+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:28.145+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:28.146+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:33.249+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:33.253+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:38.312+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:38.312+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:43.377+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:43.378+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:48.438+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:48.440+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:00:53.715+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:00:53.718+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:01:15.560+0000] {job.py:229} INFO - Heartbeat recovered after 22.03 seconds
+[2024-12-09T14:01:15.821+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:01:15.825+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:01:20.876+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:01:20.877+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:01:25.970+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:01:25.972+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:01:31.060+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:01:31.060+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:01:36.159+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:01:36.160+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:01:41.242+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:01:41.243+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:01:46.324+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:01:46.325+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:01:51.404+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:01:51.405+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:01:56.504+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:01:56.505+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:01.595+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:01.596+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:06.647+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:06.648+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:11.697+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:11.698+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:16.779+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:16.780+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:21.819+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:21.820+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:26.870+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:26.871+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:31.966+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:31.967+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:37.053+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:37.053+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:42.145+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:42.146+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:47.195+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:47.196+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:52.240+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:52.241+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:02:57.322+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:02:57.324+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:02.402+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:02.403+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:07.480+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:07.481+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:12.519+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:12.519+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:17.598+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:17.598+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:22.634+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:22.634+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:26.396+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '2e83b283-5218-45fc-8c71-f7dd45bcc4f9', 'invoice_id': '326-78-5178', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Food and beverages', 'unit_price': 91.4, 'quantity': 7, 'tax_5_percent': 31.99, 'total': 671.79, 'date': '2/3/2019', 'time': '10:19', 'payment': 'Cash', 'cogs': 639.8, 'gross_margin_percentage': 4.761904762, 'gross_income': 31.99, 'rating': 9.5}
+[2024-12-09T14:03:26.468+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '6a107010-0f93-4233-8332-5d7b59972b0c', 'invoice_id': '162-48-8011', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 44.59, 'quantity': 5, 'tax_5_percent': 11.1475, 'total': 234.0975, 'date': '2/10/2019', 'time': '15:10', 'payment': 'Cash', 'cogs': 222.95, 'gross_margin_percentage': 4.761904762, 'gross_income': 11.1475, 'rating': 8.5}
+[2024-12-09T14:03:26.469+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '93b3bc28-b2ea-4aee-a6ce-74bca99c11a0', 'invoice_id': '616-24-2851', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Fashion accessories', 'unit_price': 17.87, 'quantity': 4, 'tax_5_percent': 3.574, 'total': 75.054, 'date': '3/22/2019', 'time': '14:42', 'payment': 'Ewallet', 'cogs': 71.48, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.574, 'rating': 6.5}
+[2024-12-09T14:03:26.469+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '149f41a9-a892-4290-ac12-9f05881341ad', 'invoice_id': '778-71-5554', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Fashion accessories', 'unit_price': 15.43, 'quantity': 1, 'tax_5_percent': 0.7715, 'total': 16.2015, 'date': '1/25/2019', 'time': '15:46', 'payment': 'Credit card', 'cogs': 15.43, 'gross_margin_percentage': 4.761904762, 'gross_income': 0.7715, 'rating': 6.1}
+[2024-12-09T14:03:26.470+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'df4a520c-5087-448c-95e5-7395fa2f19db', 'invoice_id': '242-55-6721', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 16.16, 'quantity': 2, 'tax_5_percent': 1.616, 'total': 33.936, 'date': '3/7/2019', 'time': '11:49', 'payment': 'Ewallet', 'cogs': 32.32, 'gross_margin_percentage': 4.761904762, 'gross_income': 1.616, 'rating': 6.5}
+[2024-12-09T14:03:26.470+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '9266265b-3cf0-470f-9f13-bc69ccccbb8e', 'invoice_id': '399-46-5918', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 85.98, 'quantity': 8, 'tax_5_percent': 34.392, 'total': 722.232, 'date': '2/28/2019', 'time': '19:01', 'payment': 'Cash', 'cogs': 687.84, 'gross_margin_percentage': 4.761904762, 'gross_income': 34.392, 'rating': 8.2}
+[2024-12-09T14:03:26.471+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '91ca6c3d-265c-4f7e-abd8-6e1982d12c8a', 'invoice_id': '106-35-6779', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 44.34, 'quantity': 2, 'tax_5_percent': 4.434, 'total': 93.114, 'date': '3/27/2019', 'time': '11:26', 'payment': 'Cash', 'cogs': 88.68, 'gross_margin_percentage': 4.761904762, 'gross_income': 4.434, 'rating': 5.8}
+[2024-12-09T14:03:26.472+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '11184d84-02e4-4bfa-9b9c-7396259b5800', 'invoice_id': '635-40-6220', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 89.6, 'quantity': 8, 'tax_5_percent': 35.84, 'total': 752.64, 'date': '2/7/2019', 'time': '11:28', 'payment': 'Ewallet', 'cogs': 716.8, 'gross_margin_percentage': 4.761904762, 'gross_income': 35.84, 'rating': 6.6}
+[2024-12-09T14:03:26.473+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '3bf52330-47d7-48fc-94f9-f2b1652e2455', 'invoice_id': '817-48-8732', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 72.35, 'quantity': 10, 'tax_5_percent': 36.175, 'total': 759.675, 'date': '1/20/2019', 'time': '15:55', 'payment': 'Cash', 'cogs': 723.5, 'gross_margin_percentage': 4.761904762, 'gross_income': 36.175, 'rating': 5.4}
+[2024-12-09T14:03:26.474+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'f9b870e6-2022-4219-b78d-033cf51776b9', 'invoice_id': '120-06-4233', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 30.61, 'quantity': 6, 'tax_5_percent': 9.183, 'total': 192.843, 'date': '3/12/2019', 'time': '20:36', 'payment': 'Cash', 'cogs': 183.66, 'gross_margin_percentage': 4.761904762, 'gross_income': 9.183, 'rating': 9.3}
+[2024-12-09T14:03:26.475+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'fb956b72-d584-4c44-acc4-13b0fcbf628f', 'invoice_id': '285-68-5083', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 24.74, 'quantity': 3, 'tax_5_percent': 3.711, 'total': 77.931, 'date': '2/15/2019', 'time': '17:47', 'payment': 'Credit card', 'cogs': 74.22, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.711, 'rating': 10.0}
+[2024-12-09T14:03:26.475+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '3464d7cb-9f34-4a0a-b128-620383cf8c1f', 'invoice_id': '803-83-5989', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 55.73, 'quantity': 6, 'tax_5_percent': 16.719, 'total': 351.099, 'date': '2/24/2019', 'time': '10:55', 'payment': 'Ewallet', 'cogs': 334.38, 'gross_margin_percentage': 4.761904762, 'gross_income': 16.719, 'rating': 7.0}
+[2024-12-09T14:03:26.476+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '7b85771c-3c47-4b1a-9a2f-bde1ba9500c5', 'invoice_id': '347-34-2234', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 55.07, 'quantity': 9, 'tax_5_percent': 24.7815, 'total': 520.4115, 'date': '2/3/2019', 'time': '13:40', 'payment': 'Ewallet', 'cogs': 495.63, 'gross_margin_percentage': 4.761904762, 'gross_income': 24.7815, 'rating': 10.0}
+[2024-12-09T14:03:26.476+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'bc502ed6-2615-4e0b-8a8c-544c55fb4442', 'invoice_id': '199-75-8169', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 15.81, 'quantity': 10, 'tax_5_percent': 7.905, 'total': 166.005, 'date': '3/6/2019', 'time': '12:27', 'payment': 'Credit card', 'cogs': 158.1, 'gross_margin_percentage': 4.761904762, 'gross_income': 7.905, 'rating': 8.6}
+[2024-12-09T14:03:26.477+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '9abffc7a-b21f-42e4-b752-7302008fe943', 'invoice_id': '853-23-2453', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 75.74, 'quantity': 4, 'tax_5_percent': 15.148, 'total': 318.108, 'date': '2/14/2019', 'time': '14:35', 'payment': 'Cash', 'cogs': 302.96, 'gross_margin_percentage': 4.761904762, 'gross_income': 15.148, 'rating': 7.6}
+[2024-12-09T14:03:26.478+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'c6829ed8-9593-40c2-b138-e7f0c2cf651b', 'invoice_id': '877-22-3308', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 15.87, 'quantity': 10, 'tax_5_percent': 7.935, 'total': 166.635, 'date': '3/13/2019', 'time': '16:40', 'payment': 'Cash', 'cogs': 158.7, 'gross_margin_percentage': 4.761904762, 'gross_income': 7.935, 'rating': 5.8}
+[2024-12-09T14:03:26.479+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '77608aa4-c81b-4ad8-8167-7057e5808e99', 'invoice_id': '838-78-4295', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 33.47, 'quantity': 2, 'tax_5_percent': 3.347, 'total': 70.287, 'date': '2/10/2019', 'time': '15:43', 'payment': 'Ewallet', 'cogs': 66.94, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.347, 'rating': 6.7}
+[2024-12-09T14:03:26.479+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '0659878b-a3f1-4ce7-ad9a-26ff8f0ec8cd', 'invoice_id': '109-28-2512', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Fashion accessories', 'unit_price': 97.61, 'quantity': 6, 'tax_5_percent': 29.283, 'total': 614.943, 'date': '1/7/2019', 'time': '15:01', 'payment': 'Ewallet', 'cogs': 585.66, 'gross_margin_percentage': 4.761904762, 'gross_income': 29.283, 'rating': 9.9}
+[2024-12-09T14:03:26.480+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'e27bbbd2-b528-4360-bf58-b59270c55cf0', 'invoice_id': '232-11-3025', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 78.77, 'quantity': 10, 'tax_5_percent': 39.385, 'total': 827.085, 'date': '1/24/2019', 'time': '10:04', 'payment': 'Cash', 'cogs': 787.7, 'gross_margin_percentage': 4.761904762, 'gross_income': 39.385, 'rating': 6.4}
+[2024-12-09T14:03:26.480+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'be983fca-c150-4125-9660-e6c736a33cb7', 'invoice_id': '382-03-4532', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 18.33, 'quantity': 1, 'tax_5_percent': 0.9165, 'total': 19.2465, 'date': '2/2/2019', 'time': '18:50', 'payment': 'Cash', 'cogs': 18.33, 'gross_margin_percentage': 4.761904762, 'gross_income': 0.9165, 'rating': 4.3}
+[2024-12-09T14:03:26.481+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '5fb16431-de99-4c2d-829e-efef5a5de0c1', 'invoice_id': '393-65-2792', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Food and beverages', 'unit_price': 89.48, 'quantity': 10, 'tax_5_percent': 44.74, 'total': 939.54, 'date': '1/6/2019', 'time': '12:46', 'payment': 'Credit card', 'cogs': 894.8, 'gross_margin_percentage': 4.761904762, 'gross_income': 44.74, 'rating': 9.6}
+[2024-12-09T14:03:26.481+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '4ba73dee-df46-4688-a2d5-4cc5de66bee5', 'invoice_id': '796-12-2025', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Fashion accessories', 'unit_price': 62.12, 'quantity': 10, 'tax_5_percent': 31.06, 'total': 652.26, 'date': '2/11/2019', 'time': '16:19', 'payment': 'Cash', 'cogs': 621.2, 'gross_margin_percentage': 4.761904762, 'gross_income': 31.06, 'rating': 5.9}
+[2024-12-09T14:03:26.482+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '570b4f9a-f5f7-4698-aee0-216015bf5305', 'invoice_id': '510-95-6347', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 48.52, 'quantity': 3, 'tax_5_percent': 7.278, 'total': 152.838, 'date': '3/5/2019', 'time': '18:17', 'payment': 'Ewallet', 'cogs': 145.56, 'gross_margin_percentage': 4.761904762, 'gross_income': 7.278, 'rating': 4.0}
+[2024-12-09T14:03:26.482+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '64b51e54-0c5e-4566-ae12-8497da016428', 'invoice_id': '841-35-6630', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 75.91, 'quantity': 6, 'tax_5_percent': 22.773, 'total': 478.233, 'date': '3/9/2019', 'time': '18:21', 'payment': 'Cash', 'cogs': 455.46, 'gross_margin_percentage': 4.761904762, 'gross_income': 22.773, 'rating': 8.7}
+[2024-12-09T14:03:26.483+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '3e7ef7bd-c493-43d5-8985-f60aed76f4fc', 'invoice_id': '287-21-9091', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 74.67, 'quantity': 9, 'tax_5_percent': 33.6015, 'total': 705.6315, 'date': '1/22/2019', 'time': '10:55', 'payment': 'Ewallet', 'cogs': 672.03, 'gross_margin_percentage': 4.761904762, 'gross_income': 33.6015, 'rating': 9.4}
+[2024-12-09T14:03:26.483+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '8456b41c-2d3f-4e6a-b6f0-fe298f42b6be', 'invoice_id': '732-94-0499', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 41.65, 'quantity': 10, 'tax_5_percent': 20.825, 'total': 437.325, 'date': '1/13/2019', 'time': '17:04', 'payment': 'Credit card', 'cogs': 416.5, 'gross_margin_percentage': 4.761904762, 'gross_income': 20.825, 'rating': 5.4}
+[2024-12-09T14:03:26.484+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '4bc66c80-0720-46fd-be60-185d65585958', 'invoice_id': '263-10-3913', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Fashion accessories', 'unit_price': 49.04, 'quantity': 9, 'tax_5_percent': 22.068, 'total': 463.428, 'date': '1/9/2019', 'time': '14:20', 'payment': 'Credit card', 'cogs': 441.36, 'gross_margin_percentage': 4.761904762, 'gross_income': 22.068, 'rating': 8.6}
+[2024-12-09T14:03:26.484+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'fd20e442-58f2-4a8c-b4b1-1a45a8740434', 'invoice_id': '381-20-0914', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Fashion accessories', 'unit_price': 20.01, 'quantity': 9, 'tax_5_percent': 9.0045, 'total': 189.0945, 'date': '1/12/2019', 'time': '15:48', 'payment': 'Credit card', 'cogs': 180.09, 'gross_margin_percentage': 4.761904762, 'gross_income': 9.0045, 'rating': 5.7}
+[2024-12-09T14:03:26.485+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '49936f1f-29c4-4298-bf99-e2a29c7c482f', 'invoice_id': '829-49-1914', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 78.31, 'quantity': 10, 'tax_5_percent': 39.155, 'total': 822.255, 'date': '3/5/2019', 'time': '16:24', 'payment': 'Ewallet', 'cogs': 783.1, 'gross_margin_percentage': 4.761904762, 'gross_income': 39.155, 'rating': 6.6}
+[2024-12-09T14:03:26.485+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '214ae005-0d6f-4cf4-a87c-b5c287550e14', 'invoice_id': '756-01-7507', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 20.38, 'quantity': 5, 'tax_5_percent': 5.095, 'total': 106.995, 'date': '1/22/2019', 'time': '18:56', 'payment': 'Cash', 'cogs': 101.9, 'gross_margin_percentage': 4.761904762, 'gross_income': 5.095, 'rating': 6.0}
+[2024-12-09T14:03:26.485+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '13d01f3f-3f20-4b68-af58-6f7435d03816', 'invoice_id': '870-72-4431', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 99.19, 'quantity': 6, 'tax_5_percent': 29.757, 'total': 624.897, 'date': '1/21/2019', 'time': '14:42', 'payment': 'Credit card', 'cogs': 595.14, 'gross_margin_percentage': 4.761904762, 'gross_income': 29.757, 'rating': 5.5}
+[2024-12-09T14:03:26.486+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '4559c08e-9527-4246-882f-5ae7bf246bbe', 'invoice_id': '847-38-7188', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 96.68, 'quantity': 3, 'tax_5_percent': 14.502, 'total': 304.542, 'date': '1/26/2019', 'time': '19:56', 'payment': 'Ewallet', 'cogs': 290.04, 'gross_margin_percentage': 4.761904762, 'gross_income': 14.502, 'rating': 6.4}
+[2024-12-09T14:03:26.486+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '58b37108-1a07-485c-adf5-defb6c6d54e0', 'invoice_id': '480-63-2856', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Food and beverages', 'unit_price': 19.25, 'quantity': 8, 'tax_5_percent': 7.7, 'total': 161.7, 'date': '1/23/2019', 'time': '18:37', 'payment': 'Ewallet', 'cogs': 154.0, 'gross_margin_percentage': 4.761904762, 'gross_income': 7.7, 'rating': 6.6}
+[2024-12-09T14:03:26.487+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'c6c3ed4d-2666-4f68-a74c-e188a5cb458c', 'invoice_id': '787-56-0757', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 80.36, 'quantity': 4, 'tax_5_percent': 16.072, 'total': 337.512, 'date': '2/23/2019', 'time': '18:45', 'payment': 'Credit card', 'cogs': 321.44, 'gross_margin_percentage': 4.761904762, 'gross_income': 16.072, 'rating': 8.3}
+[2024-12-09T14:03:26.487+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '7040da05-99bf-47a3-8a40-8fd58e330ac0', 'invoice_id': '360-39-5055', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 48.91, 'quantity': 5, 'tax_5_percent': 12.2275, 'total': 256.7775, 'date': '3/9/2019', 'time': '10:17', 'payment': 'Cash', 'cogs': 244.55, 'gross_margin_percentage': 4.761904762, 'gross_income': 12.2275, 'rating': 6.6}
+[2024-12-09T14:03:26.488+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '7e4fb174-9029-45c2-a2ac-e694e6e6e454', 'invoice_id': '730-50-9884', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 83.06, 'quantity': 7, 'tax_5_percent': 29.071, 'total': 610.491, 'date': '3/5/2019', 'time': '14:31', 'payment': 'Ewallet', 'cogs': 581.42, 'gross_margin_percentage': 4.761904762, 'gross_income': 29.071, 'rating': 4.0}
+[2024-12-09T14:03:26.489+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'ec593a35-a9de-4857-9b85-f5d53baa5ea0', 'invoice_id': '362-58-8315', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Fashion accessories', 'unit_price': 76.52, 'quantity': 5, 'tax_5_percent': 19.13, 'total': 401.73, 'date': '3/25/2019', 'time': '10:23', 'payment': 'Cash', 'cogs': 382.6, 'gross_margin_percentage': 4.761904762, 'gross_income': 19.13, 'rating': 9.9}
+[2024-12-09T14:03:26.491+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'f423ff42-30bd-47b3-ad6c-528c00b3561d', 'invoice_id': '633-44-8566', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Food and beverages', 'unit_price': 49.38, 'quantity': 7, 'tax_5_percent': 17.283, 'total': 362.943, 'date': '3/27/2019', 'time': '20:35', 'payment': 'Credit card', 'cogs': 345.66, 'gross_margin_percentage': 4.761904762, 'gross_income': 17.283, 'rating': 7.3}
+[2024-12-09T14:03:26.491+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '53ca55bf-7d73-4ef3-8bbf-688fd1220643', 'invoice_id': '504-35-8843', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 42.47, 'quantity': 1, 'tax_5_percent': 2.1235, 'total': 44.5935, 'date': '1/2/2019', 'time': '16:57', 'payment': 'Cash', 'cogs': 42.47, 'gross_margin_percentage': 4.761904762, 'gross_income': 2.1235, 'rating': 5.7}
+[2024-12-09T14:03:26.492+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '88cb819a-d597-40db-9e24-feacc4c96a6d', 'invoice_id': '318-68-5053', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 76.99, 'quantity': 6, 'tax_5_percent': 23.097, 'total': 485.037, 'date': '2/27/2019', 'time': '17:55', 'payment': 'Cash', 'cogs': 461.94, 'gross_margin_percentage': 4.761904762, 'gross_income': 23.097, 'rating': 6.1}
+[2024-12-09T14:03:26.492+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '38a53271-e715-4be5-9dbd-240d83ad2474', 'invoice_id': '565-80-5980', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 47.38, 'quantity': 4, 'tax_5_percent': 9.476, 'total': 198.996, 'date': '1/23/2019', 'time': '10:25', 'payment': 'Cash', 'cogs': 189.52, 'gross_margin_percentage': 4.761904762, 'gross_income': 9.476, 'rating': 7.1}
+[2024-12-09T14:03:26.493+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '385f12f5-6bf0-49b3-b57a-edc1e173e6bc', 'invoice_id': '225-32-0908', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 44.86, 'quantity': 10, 'tax_5_percent': 22.43, 'total': 471.03, 'date': '1/26/2019', 'time': '19:54', 'payment': 'Ewallet', 'cogs': 448.6, 'gross_margin_percentage': 4.761904762, 'gross_income': 22.43, 'rating': 8.2}
+[2024-12-09T14:03:26.493+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '2e3e2235-7759-4ab9-a987-16c32fd00cab', 'invoice_id': '873-51-0671', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 21.98, 'quantity': 7, 'tax_5_percent': 7.693, 'total': 161.553, 'date': '1/10/2019', 'time': '16:42', 'payment': 'Ewallet', 'cogs': 153.86, 'gross_margin_percentage': 4.761904762, 'gross_income': 7.693, 'rating': 5.1}
+[2024-12-09T14:03:26.494+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '7b0e544e-bb25-47b8-ad32-b88f7ce9fb72', 'invoice_id': '152-08-9985', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 64.36, 'quantity': 9, 'tax_5_percent': 28.962, 'total': 608.202, 'date': '3/12/2019', 'time': '12:09', 'payment': 'Credit card', 'cogs': 579.24, 'gross_margin_percentage': 4.761904762, 'gross_income': 28.962, 'rating': 8.6}
+[2024-12-09T14:03:26.494+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '8ce854a3-27d6-4076-8ef8-8edd6a7ef554', 'invoice_id': '512-91-0811', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 89.75, 'quantity': 1, 'tax_5_percent': 4.4875, 'total': 94.2375, 'date': '2/6/2019', 'time': '20:05', 'payment': 'Credit card', 'cogs': 89.75, 'gross_margin_percentage': 4.761904762, 'gross_income': 4.4875, 'rating': 6.6}
+[2024-12-09T14:03:26.494+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'a14d1611-94bd-40f2-9e45-c2b90f75bf54', 'invoice_id': '594-34-4444', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 97.16, 'quantity': 1, 'tax_5_percent': 4.858, 'total': 102.018, 'date': '3/8/2019', 'time': '20:38', 'payment': 'Ewallet', 'cogs': 97.16, 'gross_margin_percentage': 4.761904762, 'gross_income': 4.858, 'rating': 7.2}
+[2024-12-09T14:03:26.495+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'c6395904-26af-4316-aa3e-d91a1ecbd6bf', 'invoice_id': '766-85-7061', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 87.87, 'quantity': 10, 'tax_5_percent': 43.935, 'total': 922.635, 'date': '3/29/2019', 'time': '10:25', 'payment': 'Ewallet', 'cogs': 878.7, 'gross_margin_percentage': 4.761904762, 'gross_income': 43.935, 'rating': 5.1}
+[2024-12-09T14:03:26.495+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '6ee7108c-9eb7-4c5c-a64f-f8bfb032e951', 'invoice_id': '871-39-9221', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 12.45, 'quantity': 6, 'tax_5_percent': 3.735, 'total': 78.435, 'date': '2/9/2019', 'time': '13:11', 'payment': 'Cash', 'cogs': 74.7, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.735, 'rating': 4.1}
+[2024-12-09T14:03:26.496+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'ea5336ce-6922-461c-ae70-de2deae94c3e', 'invoice_id': '865-92-6136', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Food and beverages', 'unit_price': 52.75, 'quantity': 3, 'tax_5_percent': 7.9125, 'total': 166.1625, 'date': '3/23/2019', 'time': '10:16', 'payment': 'Ewallet', 'cogs': 158.25, 'gross_margin_percentage': 4.761904762, 'gross_income': 7.9125, 'rating': 9.3}
+[2024-12-09T14:03:26.496+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '7733e0d8-cef2-476a-be79-fb192e9ae600', 'invoice_id': '733-01-9107', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 82.7, 'quantity': 6, 'tax_5_percent': 24.81, 'total': 521.01, 'date': '3/5/2019', 'time': '18:14', 'payment': 'Cash', 'cogs': 496.2, 'gross_margin_percentage': 4.761904762, 'gross_income': 24.81, 'rating': 7.4}
+[2024-12-09T14:03:27.670+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:27.672+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:32.714+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:32.715+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:37.761+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:37.762+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:42.839+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:42.840+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:47.913+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:47.914+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:03:52.982+0000] {local_task_job_runner.py:318} WARNING - Recorded pid 156 does not match the current pid 98
+[2024-12-09T14:03:52.982+0000] {local_task_job_runner.py:218} WARNING - Heartbeat failed with Exception: PID of job runner does not match
+[2024-12-09T14:04:18.347+0000] {local_task_job_runner.py:346} WARNING - State of this instance has been externally set to success. Terminating instance.
+[2024-12-09T14:04:18.349+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2024-12-09T14:04:18.353+0000] {process_utils.py:132} INFO - Sending 15 to group 98. PIDs of all processes in the group: [98]
+[2024-12-09T14:04:18.356+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 98
+[2024-12-09T14:04:18.357+0000] {taskinstance.py:3093} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-12-09T14:04:18.408+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-09T14:04:18.450+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=98, status='terminated', exitcode=0, started='13:44:15') (98) terminated with exit code 0

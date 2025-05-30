@@ -1,0 +1,19 @@
+[2024-11-29T22:57:48.542+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-11-29T22:57:48.581+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag1.process_task_tag2 manual__2024-11-29T22:57:40.778088+00:00 [queued]>
+[2024-11-29T22:57:48.609+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag1.process_task_tag2 manual__2024-11-29T22:57:40.778088+00:00 [queued]>
+[2024-11-29T22:57:48.622+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2024-11-29T22:57:48.695+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): process_task_tag2> on 2024-11-29 22:57:40.778088+00:00
+[2024-11-29T22:57:48.710+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'dag1', 'process_task_tag2', 'manual__2024-11-29T22:57:40.778088+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/dag_data.py', '--cfg-path', '/tmp/tmp8zpjf2ma']
+[2024-11-29T22:57:48.718+0000] {standard_task_runner.py:105} INFO - Job 15: Subtask process_task_tag2
+[2024-11-29T22:57:48.724+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=526) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-29T22:57:48.726+0000] {standard_task_runner.py:72} INFO - Started process 540 to run task
+[2024-11-29T22:57:48.976+0000] {task_command.py:467} INFO - Running <TaskInstance: dag1.process_task_tag2 manual__2024-11-29T22:57:40.778088+00:00 [running]> on host bffe5982c6e9
+[2024-11-29T22:57:49.319+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='admin' AIRFLOW_CTX_DAG_ID='dag1' AIRFLOW_CTX_TASK_ID='process_task_tag2' AIRFLOW_CTX_EXECUTION_DATE='2024-11-29T22:57:40.778088+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-29T22:57:40.778088+00:00'
+[2024-11-29T22:57:49.324+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-11-29T22:57:49.418+0000] {dag_data.py:70} ERROR - Une erreur est survenue lors du traitement de sales.csv : 'cimpl.Producer' object has no attribute 'send'
+[2024-11-29T22:57:49.421+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-11-29T22:57:49.453+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-11-29T22:57:49.454+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dag1, task_id=process_task_tag2, run_id=manual__2024-11-29T22:57:40.778088+00:00, execution_date=20241129T225740, start_date=20241129T225748, end_date=20241129T225749
+[2024-11-29T22:57:49.557+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-11-29T22:57:49.608+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-29T22:57:49.612+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

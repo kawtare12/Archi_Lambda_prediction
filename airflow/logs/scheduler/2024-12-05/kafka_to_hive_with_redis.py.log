@@ -1,0 +1,5 @@
+[2024-12-05T16:16:01.967+0000] {processor.py:186} INFO - Started process (PID=68) to work on /opt/airflow/dags/kafka_to_hive_with_redis.py
+[2024-12-05T16:16:01.969+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/kafka_to_hive_with_redis.py for tasks to queue
+[2024-12-05T16:16:01.978+0000] {logging_mixin.py:190} INFO - [2024-12-05T16:16:01.977+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/kafka_to_hive_with_redis.py
+[2024-12-05T16:16:02.215+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/kafka_to_hive_with_redis.py
+[2024-12-05T16:16:02.249+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/kafka_to_hive_with_redis.py took 0.298 seconds

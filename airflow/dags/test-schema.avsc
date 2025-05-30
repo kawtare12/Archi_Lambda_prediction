@@ -1,0 +1,25 @@
+{
+  "type": "record",
+  "name": "InvoiceRecord",
+  "namespace": "com.lambda.kafka",
+  "fields": [
+    {"name": "id", "type": "string"},
+    {"name": "invoice_id", "type": "string"},
+    {"name": "branch", "type": "string"},
+    {"name": "city", "type": "string"},
+    {"name": "customer_type", "type": "string"},
+    {"name": "gender", "type": "string"},
+    {"name": "product_line", "type": "string"},
+    {"name": "unit_price", "type": "float"},
+    {"name": "quantity", "type": "int"},
+    {"name": "tax_5_percent", "type": "float"},
+    {"name": "total", "type": "float"},
+    {"name": "date", "type": "string"},
+    {"name": "time", "type": "string"},
+    {"name": "payment", "type": "string"},
+    {"name": "cogs", "type": "float"},
+    {"name": "gross_margin_percentage", "type": "float"},
+    {"name": "gross_income", "type": "float"},
+    {"name": "rating", "type": "float"}
+  ]
+}

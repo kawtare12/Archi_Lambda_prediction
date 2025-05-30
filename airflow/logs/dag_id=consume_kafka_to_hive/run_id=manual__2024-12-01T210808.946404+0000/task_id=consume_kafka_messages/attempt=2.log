@@ -1,0 +1,166 @@
+[2024-12-01T21:13:22.289+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-01T21:13:22.345+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: consume_kafka_to_hive.consume_kafka_messages manual__2024-12-01T21:08:08.946404+00:00 [queued]>
+[2024-12-01T21:13:22.381+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: consume_kafka_to_hive.consume_kafka_messages manual__2024-12-01T21:08:08.946404+00:00 [queued]>
+[2024-12-01T21:13:22.394+0000] {taskinstance.py:2866} INFO - Starting attempt 2 of 2
+[2024-12-01T21:13:22.473+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): consume_kafka_messages> on 2024-12-01 21:08:08.946404+00:00
+[2024-12-01T21:13:22.483+0000] {standard_task_runner.py:72} INFO - Started process 599 to run task
+[2024-12-01T21:13:22.507+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'consume_kafka_to_hive', 'consume_kafka_messages', 'manual__2024-12-01T21:08:08.946404+00:00', '--job-id', '75', '--raw', '--subdir', 'DAGS_FOLDER/consume_kafka_to_hive.py', '--cfg-path', '/tmp/tmpgfv4cuok']
+[2024-12-01T21:13:22.512+0000] {standard_task_runner.py:105} INFO - Job 75: Subtask consume_kafka_messages
+[2024-12-01T21:13:22.702+0000] {task_command.py:467} INFO - Running <TaskInstance: consume_kafka_to_hive.consume_kafka_messages manual__2024-12-01T21:08:08.946404+00:00 [running]> on host 45770b1a429e
+[2024-12-01T21:13:22.941+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='consume_kafka_to_hive' AIRFLOW_CTX_TASK_ID='consume_kafka_messages' AIRFLOW_CTX_EXECUTION_DATE='2024-12-01T21:08:08.946404+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-01T21:08:08.946404+00:00'
+[2024-12-01T21:13:22.943+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-01T21:13:23.308+0000] {hive.py:475} INFO - USE `default`
+[2024-12-01T21:13:23.962+0000] {hive.py:475} INFO - 
+    CREATE TABLE IF NOT EXISTS sales (
+        id STRING,
+        invoice_id STRING,
+        branch STRING,
+        city STRING,
+        customer_type STRING,
+        gender STRING,
+        product_line STRING,
+        unit_price FLOAT,
+        quantity INT,
+        tax_5_percent FLOAT,
+        total FLOAT,
+        `date` STRING,
+        time STRING,
+        payment STRING,
+        cogs FLOAT,
+        gross_margin_percentage FLOAT,
+        gross_income FLOAT,
+        rating FLOAT
+    ) STORED AS ORC
+    
+[2024-12-01T21:13:24.043+0000] {logging_mixin.py:190} INFO - Subscribed to topic 'tohive'
+[2024-12-01T21:13:25.092+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/consume_kafka_to_hive.py", line 77, in consume_kafka_to_hive
+    data = reader.read(decoder)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 638, in read
+    return self.read_data(self.writers_schema, self.readers_schema, decoder)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 716, in read_data
+    return self.read_record(writers_schema, readers_schema, decoder)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 911, in read_record
+    field_val = self.read_data(field.type, readers_field.type, decoder)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 665, in read_data
+    return decoder.read_utf8()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 319, in read_utf8
+    return self.read_bytes().decode("utf-8")
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 312, in read_bytes
+    return self.read(self.read_long())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 216, in read
+    raise avro.errors.InvalidAvroBinaryEncoding(f"Requested {n} bytes to read, expected positive integer.")
+avro.errors.InvalidAvroBinaryEncoding: Requested -62 bytes to read, expected positive integer.
+[2024-12-01T21:13:25.117+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=consume_kafka_to_hive, task_id=consume_kafka_messages, run_id=manual__2024-12-01T21:08:08.946404+00:00, execution_date=20241201T210808, start_date=20241201T211322, end_date=20241201T211325
+[2024-12-01T21:13:25.168+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-01T21:13:25.169+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 75 for task consume_kafka_messages (Requested -62 bytes to read, expected positive integer.; 599)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/consume_kafka_to_hive.py", line 77, in consume_kafka_to_hive
+    data = reader.read(decoder)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 638, in read
+    return self.read_data(self.writers_schema, self.readers_schema, decoder)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 716, in read_data
+    return self.read_record(writers_schema, readers_schema, decoder)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 911, in read_record
+    field_val = self.read_data(field.type, readers_field.type, decoder)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 665, in read_data
+    return decoder.read_utf8()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 319, in read_utf8
+    return self.read_bytes().decode("utf-8")
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 312, in read_bytes
+    return self.read(self.read_long())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/avro/io.py", line 216, in read
+    raise avro.errors.InvalidAvroBinaryEncoding(f"Requested {n} bytes to read, expected positive integer.")
+avro.errors.InvalidAvroBinaryEncoding: Requested -62 bytes to read, expected positive integer.
+[2024-12-01T21:13:25.183+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2024-12-01T21:13:25.214+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-01T21:13:25.216+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

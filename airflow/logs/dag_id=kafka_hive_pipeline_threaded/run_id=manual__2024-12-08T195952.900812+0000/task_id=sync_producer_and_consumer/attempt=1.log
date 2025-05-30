@@ -1,0 +1,221 @@
+[2024-12-08T20:00:08.546+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-08T20:00:08.569+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: kafka_hive_pipeline_threaded.sync_producer_and_consumer manual__2024-12-08T19:59:52.900812+00:00 [queued]>
+[2024-12-08T20:00:08.588+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: kafka_hive_pipeline_threaded.sync_producer_and_consumer manual__2024-12-08T19:59:52.900812+00:00 [queued]>
+[2024-12-08T20:00:08.589+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2024-12-08T20:00:08.645+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): sync_producer_and_consumer> on 2024-12-08 19:59:52.900812+00:00
+[2024-12-08T20:00:08.657+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=4429) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-12-08T20:00:08.659+0000] {standard_task_runner.py:72} INFO - Started process 4443 to run task
+[2024-12-08T20:00:08.658+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'kafka_hive_pipeline_threaded', 'sync_producer_and_consumer', 'manual__2024-12-08T19:59:52.900812+00:00', '--job-id', '233', '--raw', '--subdir', 'DAGS_FOLDER/gestion_airflow.py', '--cfg-path', '/tmp/tmpimwnoj0v']
+[2024-12-08T20:00:08.661+0000] {standard_task_runner.py:105} INFO - Job 233: Subtask sync_producer_and_consumer
+[2024-12-08T20:00:08.843+0000] {task_command.py:467} INFO - Running <TaskInstance: kafka_hive_pipeline_threaded.sync_producer_and_consumer manual__2024-12-08T19:59:52.900812+00:00 [running]> on host 45770b1a429e
+[2024-12-08T20:00:09.084+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='kafka_hive_pipeline_threaded' AIRFLOW_CTX_TASK_ID='sync_producer_and_consumer' AIRFLOW_CTX_EXECUTION_DATE='2024-12-08T19:59:52.900812+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-08T19:59:52.900812+00:00'
+[2024-12-08T20:00:09.085+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-08T20:00:09.211+0000] {csv_to_kafka_with_redis.py:51} INFO - Loaded CSV Data:
+    Invoice ID Branch       City  ... gross margin percentage gross income Rating
+0  750-67-8428      A     Yangon  ...                4.761905      26.1415    9.1
+1  226-31-3081      C  Naypyitaw  ...                4.761905       3.8200    9.6
+2  631-41-3108      A     Yangon  ...                4.761905      16.2155    7.4
+3  123-19-1176      A     Yangon  ...                4.761905      23.2880    8.4
+4  373-73-7910      A     Yangon  ...                4.761905      30.2085    5.3
+
+[5 rows x 17 columns]
+[2024-12-08T20:00:09.213+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '134a5e0f-60c6-4796-a489-b77db23b15c7', 'invoice_id': '750-67-8428', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 74.69, 'quantity': 7, 'tax_5_percent': 26.1415, 'total': 548.9715, 'date': '1/5/2019', 'time': '13:08', 'payment': 'Ewallet', 'cogs': 522.83, 'gross_margin_percentage': 4.761904762, 'gross_income': 26.1415, 'rating': 9.1}
+[2024-12-08T20:00:09.243+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '313f9c67-5313-430d-85e2-96e579a940e4', 'invoice_id': '226-31-3081', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 15.28, 'quantity': 5, 'tax_5_percent': 3.82, 'total': 80.22, 'date': '3/8/2019', 'time': '10:29', 'payment': 'Cash', 'cogs': 76.4, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.82, 'rating': 9.6}
+[2024-12-08T20:00:09.246+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '93ade44e-b1b3-4638-b958-35a13eed815f', 'invoice_id': '631-41-3108', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 46.33, 'quantity': 7, 'tax_5_percent': 16.2155, 'total': 340.5255, 'date': '3/3/2019', 'time': '13:23', 'payment': 'Credit card', 'cogs': 324.31, 'gross_margin_percentage': 4.761904762, 'gross_income': 16.2155, 'rating': 7.4}
+[2024-12-08T20:00:09.248+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'c6057a67-41fb-4b9a-a217-5a53c173c25d', 'invoice_id': '123-19-1176', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 58.22, 'quantity': 8, 'tax_5_percent': 23.288, 'total': 489.048, 'date': '1/27/2019', 'time': '20:33', 'payment': 'Ewallet', 'cogs': 465.76, 'gross_margin_percentage': 4.761904762, 'gross_income': 23.288, 'rating': 8.4}
+[2024-12-08T20:00:09.249+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'e4d34bf8-2e69-411c-ac2e-2055ee314e4a', 'invoice_id': '373-73-7910', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 86.31, 'quantity': 7, 'tax_5_percent': 30.2085, 'total': 634.3785, 'date': '2/8/2019', 'time': '10:37', 'payment': 'Ewallet', 'cogs': 604.17, 'gross_margin_percentage': 4.761904762, 'gross_income': 30.2085, 'rating': 5.3}
+[2024-12-08T20:00:09.251+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '6a87c3de-57ed-4d10-af78-76cad39baea7', 'invoice_id': '699-14-3026', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 85.39, 'quantity': 7, 'tax_5_percent': 29.8865, 'total': 627.6165, 'date': '3/25/2019', 'time': '18:30', 'payment': 'Ewallet', 'cogs': 597.73, 'gross_margin_percentage': 4.761904762, 'gross_income': 29.8865, 'rating': 4.1}
+[2024-12-08T20:00:09.252+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'c5765b54-05f9-4ddd-85ec-84cded67b947', 'invoice_id': '355-53-5943', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 68.84, 'quantity': 6, 'tax_5_percent': 20.652, 'total': 433.692, 'date': '2/25/2019', 'time': '14:36', 'payment': 'Ewallet', 'cogs': 413.04, 'gross_margin_percentage': 4.761904762, 'gross_income': 20.652, 'rating': 5.8}
+[2024-12-08T20:00:09.253+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '202ea7e2-6d40-47fc-9dc3-2207347da764', 'invoice_id': '315-22-5665', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 73.56, 'quantity': 10, 'tax_5_percent': 36.78, 'total': 772.38, 'date': '2/24/2019', 'time': '11:38', 'payment': 'Ewallet', 'cogs': 735.6, 'gross_margin_percentage': 4.761904762, 'gross_income': 36.78, 'rating': 8.0}
+[2024-12-08T20:00:09.254+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'd8c0fa9e-1a1b-4bc6-bcf4-dc55739a7571', 'invoice_id': '665-32-9167', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 36.26, 'quantity': 2, 'tax_5_percent': 3.626, 'total': 76.146, 'date': '1/10/2019', 'time': '17:15', 'payment': 'Credit card', 'cogs': 72.52, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.626, 'rating': 7.2}
+[2024-12-08T20:00:09.256+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'b38fa228-7e89-46e8-b2e5-179ee632bcf6', 'invoice_id': '692-92-5582', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 54.84, 'quantity': 3, 'tax_5_percent': 8.226, 'total': 172.746, 'date': '2/20/2019', 'time': '13:27', 'payment': 'Credit card', 'cogs': 164.52, 'gross_margin_percentage': 4.761904762, 'gross_income': 8.226, 'rating': 5.9}
+[2024-12-08T20:00:09.257+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '155ce00c-fdbe-457e-9177-d6176725ecdb', 'invoice_id': '351-62-0822', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Fashion accessories', 'unit_price': 14.48, 'quantity': 4, 'tax_5_percent': 2.896, 'total': 60.816, 'date': '2/6/2019', 'time': '18:07', 'payment': 'Ewallet', 'cogs': 57.92, 'gross_margin_percentage': 4.761904762, 'gross_income': 2.896, 'rating': 4.5}
+[2024-12-08T20:00:09.258+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'ae97619b-8b5a-4fc8-ba69-d39340b9ce0b', 'invoice_id': '529-56-3974', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 25.51, 'quantity': 4, 'tax_5_percent': 5.102, 'total': 107.142, 'date': '3/9/2019', 'time': '17:03', 'payment': 'Cash', 'cogs': 102.04, 'gross_margin_percentage': 4.761904762, 'gross_income': 5.102, 'rating': 6.8}
+[2024-12-08T20:00:09.259+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'e46f1f28-7709-4df1-819c-6958259aa5e1', 'invoice_id': '365-64-0515', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 46.95, 'quantity': 5, 'tax_5_percent': 11.7375, 'total': 246.4875, 'date': '2/12/2019', 'time': '10:25', 'payment': 'Ewallet', 'cogs': 234.75, 'gross_margin_percentage': 4.761904762, 'gross_income': 11.7375, 'rating': 7.1}
+[2024-12-08T20:00:09.261+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '749c1334-4b21-4348-8d17-118eef294758', 'invoice_id': '252-56-2699', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Food and beverages', 'unit_price': 43.19, 'quantity': 10, 'tax_5_percent': 21.595, 'total': 453.495, 'date': '2/7/2019', 'time': '16:48', 'payment': 'Ewallet', 'cogs': 431.9, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.595, 'rating': 8.2}
+[2024-12-08T20:00:09.263+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '6abf111a-5e57-4062-87b5-7bf6270024b1', 'invoice_id': '829-34-3910', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 71.38, 'quantity': 10, 'tax_5_percent': 35.69, 'total': 749.49, 'date': '3/29/2019', 'time': '19:21', 'payment': 'Cash', 'cogs': 713.8, 'gross_margin_percentage': 4.761904762, 'gross_income': 35.69, 'rating': 5.7}
+[2024-12-08T20:00:09.265+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'f18f8700-ce29-4b8d-88c5-4fefd7765fb6', 'invoice_id': '299-46-1805', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 93.72, 'quantity': 6, 'tax_5_percent': 28.116, 'total': 590.436, 'date': '1/15/2019', 'time': '16:19', 'payment': 'Cash', 'cogs': 562.32, 'gross_margin_percentage': 4.761904762, 'gross_income': 28.116, 'rating': 4.5}
+[2024-12-08T20:00:09.266+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '5b43251d-6436-42bc-b787-e67c0ef6a39e', 'invoice_id': '656-95-9349', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 68.93, 'quantity': 7, 'tax_5_percent': 24.1255, 'total': 506.6355, 'date': '3/11/2019', 'time': '11:03', 'payment': 'Credit card', 'cogs': 482.51, 'gross_margin_percentage': 4.761904762, 'gross_income': 24.1255, 'rating': 4.6}
+[2024-12-08T20:00:09.267+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '5f4d3419-3f79-44b1-9c35-915881169e8d', 'invoice_id': '765-26-6951', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 72.61, 'quantity': 6, 'tax_5_percent': 21.783, 'total': 457.443, 'date': '1/1/2019', 'time': '10:39', 'payment': 'Credit card', 'cogs': 435.66, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.783, 'rating': 6.9}
+[2024-12-08T20:00:09.268+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'ae0ca4db-c022-46c8-9dba-31f69a201323', 'invoice_id': '329-62-1586', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Food and beverages', 'unit_price': 54.67, 'quantity': 3, 'tax_5_percent': 8.2005, 'total': 172.2105, 'date': '1/21/2019', 'time': '18:00', 'payment': 'Credit card', 'cogs': 164.01, 'gross_margin_percentage': 4.761904762, 'gross_income': 8.2005, 'rating': 8.6}
+[2024-12-08T20:00:09.269+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '9bffa751-3622-4f18-ae1d-6b768c9046d4', 'invoice_id': '319-50-3348', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 40.3, 'quantity': 2, 'tax_5_percent': 4.03, 'total': 84.63, 'date': '3/11/2019', 'time': '15:30', 'payment': 'Ewallet', 'cogs': 80.6, 'gross_margin_percentage': 4.761904762, 'gross_income': 4.03, 'rating': 4.4}
+[2024-12-08T20:00:09.270+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '568d4bea-febc-4e36-854e-714f0ea9f953', 'invoice_id': '300-71-4605', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 86.04, 'quantity': 5, 'tax_5_percent': 21.51, 'total': 451.71, 'date': '2/25/2019', 'time': '11:24', 'payment': 'Ewallet', 'cogs': 430.2, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.51, 'rating': 4.8}
+[2024-12-08T20:00:09.271+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '553898bd-ad12-4ebc-b874-d3a0d3be0517', 'invoice_id': '371-85-5789', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 87.98, 'quantity': 3, 'tax_5_percent': 13.197, 'total': 277.137, 'date': '3/5/2019', 'time': '10:40', 'payment': 'Ewallet', 'cogs': 263.94, 'gross_margin_percentage': 4.761904762, 'gross_income': 13.197, 'rating': 5.1}
+[2024-12-08T20:00:09.272+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '6c1b22e1-4b32-4fed-b9ae-1b1b27c794a4', 'invoice_id': '273-16-6619', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 33.2, 'quantity': 2, 'tax_5_percent': 3.32, 'total': 69.72, 'date': '3/15/2019', 'time': '12:20', 'payment': 'Credit card', 'cogs': 66.4, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.32, 'rating': 4.4}
+[2024-12-08T20:00:09.273+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '5b39840b-33f0-4b42-930d-e0383bc62086', 'invoice_id': '636-48-8204', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 34.56, 'quantity': 5, 'tax_5_percent': 8.64, 'total': 181.44, 'date': '2/17/2019', 'time': '11:15', 'payment': 'Ewallet', 'cogs': 172.8, 'gross_margin_percentage': 4.761904762, 'gross_income': 8.64, 'rating': 9.9}
+[2024-12-08T20:00:09.274+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '334149fc-2599-461a-83d3-076ac8eb0902', 'invoice_id': '549-59-1358', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 88.63, 'quantity': 3, 'tax_5_percent': 13.2945, 'total': 279.1845, 'date': '3/2/2019', 'time': '17:36', 'payment': 'Ewallet', 'cogs': 265.89, 'gross_margin_percentage': 4.761904762, 'gross_income': 13.2945, 'rating': 6.0}
+[2024-12-08T20:00:09.275+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'bf957787-2792-4620-9bad-021e1ee1f8b6', 'invoice_id': '227-03-5010', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 52.59, 'quantity': 8, 'tax_5_percent': 21.036, 'total': 441.756, 'date': '3/22/2019', 'time': '19:20', 'payment': 'Credit card', 'cogs': 420.72, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.036, 'rating': 8.5}
+[2024-12-08T20:00:09.277+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'ab120660-fe4a-4136-a119-1a19618002c6', 'invoice_id': '649-29-6775', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Fashion accessories', 'unit_price': 33.52, 'quantity': 1, 'tax_5_percent': 1.676, 'total': 35.196, 'date': '2/8/2019', 'time': '15:31', 'payment': 'Cash', 'cogs': 33.52, 'gross_margin_percentage': 4.761904762, 'gross_income': 1.676, 'rating': 6.7}
+[2024-12-08T20:00:09.280+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '7204da98-4bf2-4b67-896f-03c2b2cedbcf', 'invoice_id': '189-17-4241', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Fashion accessories', 'unit_price': 87.67, 'quantity': 2, 'tax_5_percent': 8.767, 'total': 184.107, 'date': '3/10/2019', 'time': '12:17', 'payment': 'Credit card', 'cogs': 175.34, 'gross_margin_percentage': 4.761904762, 'gross_income': 8.767, 'rating': 7.7}
+[2024-12-08T20:00:09.281+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '6e78c9d7-3f51-4e03-b362-b432ebca3cf2', 'invoice_id': '145-94-9061', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 88.36, 'quantity': 5, 'tax_5_percent': 22.09, 'total': 463.89, 'date': '1/25/2019', 'time': '19:48', 'payment': 'Cash', 'cogs': 441.8, 'gross_margin_percentage': 4.761904762, 'gross_income': 22.09, 'rating': 9.6}
+[2024-12-08T20:00:09.282+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'c451e350-f00c-4ae1-a9d2-eb361cf7b77b', 'invoice_id': '848-62-7243', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 24.89, 'quantity': 9, 'tax_5_percent': 11.2005, 'total': 235.2105, 'date': '3/15/2019', 'time': '15:36', 'payment': 'Cash', 'cogs': 224.01, 'gross_margin_percentage': 4.761904762, 'gross_income': 11.2005, 'rating': 7.4}
+[2024-12-08T20:00:09.283+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '8a846eb3-9081-49a1-8ddb-5e53079309fb', 'invoice_id': '871-79-8483', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Fashion accessories', 'unit_price': 94.13, 'quantity': 5, 'tax_5_percent': 23.5325, 'total': 494.1825, 'date': '2/25/2019', 'time': '19:39', 'payment': 'Credit card', 'cogs': 470.65, 'gross_margin_percentage': 4.761904762, 'gross_income': 23.5325, 'rating': 4.8}
+[2024-12-08T20:00:09.284+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'a18e0168-d4c0-437f-9ab4-a51a99c858f0', 'invoice_id': '149-71-6266', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 78.07, 'quantity': 9, 'tax_5_percent': 35.1315, 'total': 737.7615, 'date': '1/28/2019', 'time': '12:43', 'payment': 'Cash', 'cogs': 702.63, 'gross_margin_percentage': 4.761904762, 'gross_income': 35.1315, 'rating': 4.5}
+[2024-12-08T20:00:09.285+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '49e259fd-8324-416d-b2ae-92174ed18d4c', 'invoice_id': '640-49-2076', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 83.78, 'quantity': 8, 'tax_5_percent': 33.512, 'total': 703.752, 'date': '1/10/2019', 'time': '14:49', 'payment': 'Cash', 'cogs': 670.24, 'gross_margin_percentage': 4.761904762, 'gross_income': 33.512, 'rating': 5.1}
+[2024-12-08T20:00:09.286+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'f6f351ab-3f02-4d4f-90c7-4297690423c3', 'invoice_id': '595-11-5460', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 96.58, 'quantity': 2, 'tax_5_percent': 9.658, 'total': 202.818, 'date': '3/15/2019', 'time': '10:12', 'payment': 'Credit card', 'cogs': 193.16, 'gross_margin_percentage': 4.761904762, 'gross_income': 9.658, 'rating': 5.1}
+[2024-12-08T20:00:09.287+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '0cbba72e-2370-456c-83eb-f4637dec9eef', 'invoice_id': '183-56-6882', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 99.42, 'quantity': 4, 'tax_5_percent': 19.884, 'total': 417.564, 'date': '2/6/2019', 'time': '10:42', 'payment': 'Ewallet', 'cogs': 397.68, 'gross_margin_percentage': 4.761904762, 'gross_income': 19.884, 'rating': 7.5}
+[2024-12-08T20:00:09.288+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'd44513f4-614d-43e9-a0c7-78d518d87291', 'invoice_id': '232-16-2483', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 68.12, 'quantity': 1, 'tax_5_percent': 3.406, 'total': 71.526, 'date': '1/7/2019', 'time': '12:28', 'payment': 'Ewallet', 'cogs': 68.12, 'gross_margin_percentage': 4.761904762, 'gross_income': 3.406, 'rating': 6.8}
+[2024-12-08T20:00:09.289+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '5dc0debc-850a-4f34-94ba-172858a9b78d', 'invoice_id': '129-29-8530', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Sports and travel', 'unit_price': 62.62, 'quantity': 5, 'tax_5_percent': 15.655, 'total': 328.755, 'date': '3/10/2019', 'time': '19:15', 'payment': 'Ewallet', 'cogs': 313.1, 'gross_margin_percentage': 4.761904762, 'gross_income': 15.655, 'rating': 7.0}
+[2024-12-08T20:00:09.290+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '113b8293-f37b-434a-9489-f9c0f63c0628', 'invoice_id': '272-65-1806', 'branch': 'A', 'city': 'Yangon', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 60.88, 'quantity': 9, 'tax_5_percent': 27.396, 'total': 575.316, 'date': '1/15/2019', 'time': '17:17', 'payment': 'Ewallet', 'cogs': 547.92, 'gross_margin_percentage': 4.761904762, 'gross_income': 27.396, 'rating': 4.7}
+[2024-12-08T20:00:09.291+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '59fe69f9-4cf7-4de4-b95b-697d4b9a558b', 'invoice_id': '333-73-7901', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Normal', 'gender': 'Female', 'product_line': 'Health and beauty', 'unit_price': 54.92, 'quantity': 8, 'tax_5_percent': 21.968, 'total': 461.328, 'date': '3/23/2019', 'time': '13:24', 'payment': 'Ewallet', 'cogs': 439.36, 'gross_margin_percentage': 4.761904762, 'gross_income': 21.968, 'rating': 7.6}
+[2024-12-08T20:00:09.292+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '3a03267c-f7e6-4213-818a-f177cea36d0a', 'invoice_id': '777-82-7220', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 30.12, 'quantity': 8, 'tax_5_percent': 12.048, 'total': 253.008, 'date': '3/3/2019', 'time': '13:01', 'payment': 'Cash', 'cogs': 240.96, 'gross_margin_percentage': 4.761904762, 'gross_income': 12.048, 'rating': 7.7}
+[2024-12-08T20:00:09.293+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '485eac7c-6c61-4640-bd34-c07d51846057', 'invoice_id': '280-35-5823', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Home and lifestyle', 'unit_price': 86.72, 'quantity': 1, 'tax_5_percent': 4.336, 'total': 91.056, 'date': '1/17/2019', 'time': '18:45', 'payment': 'Ewallet', 'cogs': 86.72, 'gross_margin_percentage': 4.761904762, 'gross_income': 4.336, 'rating': 7.9}
+[2024-12-08T20:00:09.296+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'd1f7657e-0eed-4525-9c4b-e2e9a2fa33af', 'invoice_id': '554-53-8700', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Home and lifestyle', 'unit_price': 56.11, 'quantity': 2, 'tax_5_percent': 5.611, 'total': 117.831, 'date': '2/2/2019', 'time': '10:11', 'payment': 'Cash', 'cogs': 112.22, 'gross_margin_percentage': 4.761904762, 'gross_income': 5.611, 'rating': 6.3}
+[2024-12-08T20:00:09.298+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '05d82da1-2871-4eca-bb7d-96f6c734f6a3', 'invoice_id': '354-25-5821', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Sports and travel', 'unit_price': 69.12, 'quantity': 6, 'tax_5_percent': 20.736, 'total': 435.456, 'date': '2/8/2019', 'time': '13:03', 'payment': 'Cash', 'cogs': 414.72, 'gross_margin_percentage': 4.761904762, 'gross_income': 20.736, 'rating': 5.6}
+[2024-12-08T20:00:09.300+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '70a14f29-380d-4b8b-afc8-07f4854d0808', 'invoice_id': '228-96-1411', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 98.7, 'quantity': 8, 'tax_5_percent': 39.48, 'total': 829.08, 'date': '3/4/2019', 'time': '20:39', 'payment': 'Cash', 'cogs': 789.6, 'gross_margin_percentage': 4.761904762, 'gross_income': 39.48, 'rating': 7.6}
+[2024-12-08T20:00:09.302+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '550ade9a-f8be-4e6a-b133-9eb491ea4a65', 'invoice_id': '617-15-4209', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 15.37, 'quantity': 2, 'tax_5_percent': 1.537, 'total': 32.277, 'date': '3/16/2019', 'time': '19:47', 'payment': 'Cash', 'cogs': 30.74, 'gross_margin_percentage': 4.761904762, 'gross_income': 1.537, 'rating': 7.2}
+[2024-12-08T20:00:09.303+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '423b3290-7d36-4f46-83da-24fd32f4031d', 'invoice_id': '132-32-9879', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Electronic accessories', 'unit_price': 93.96, 'quantity': 4, 'tax_5_percent': 18.792, 'total': 394.632, 'date': '3/9/2019', 'time': '18:00', 'payment': 'Cash', 'cogs': 375.84, 'gross_margin_percentage': 4.761904762, 'gross_income': 18.792, 'rating': 9.5}
+[2024-12-08T20:00:09.304+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'ae40f2e0-3ba7-4232-8524-c212159f06a2', 'invoice_id': '370-41-7321', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Health and beauty', 'unit_price': 56.69, 'quantity': 9, 'tax_5_percent': 25.5105, 'total': 535.7205, 'date': '2/27/2019', 'time': '17:24', 'payment': 'Credit card', 'cogs': 510.21, 'gross_margin_percentage': 4.761904762, 'gross_income': 25.5105, 'rating': 8.4}
+[2024-12-08T20:00:09.305+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': 'ec7c6e9f-370c-49c6-8bc4-55038ed03366', 'invoice_id': '727-46-3608', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Food and beverages', 'unit_price': 20.01, 'quantity': 9, 'tax_5_percent': 9.0045, 'total': 189.0945, 'date': '2/6/2019', 'time': '15:47', 'payment': 'Ewallet', 'cogs': 180.09, 'gross_margin_percentage': 4.761904762, 'gross_income': 9.0045, 'rating': 4.1}
+[2024-12-08T20:00:09.307+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '13fb2d43-d023-40e1-8e51-9b1c259c7250', 'invoice_id': '669-54-1719', 'branch': 'B', 'city': 'Mandalay', 'customer_type': 'Member', 'gender': 'Male', 'product_line': 'Electronic accessories', 'unit_price': 18.93, 'quantity': 6, 'tax_5_percent': 5.679, 'total': 119.259, 'date': '2/10/2019', 'time': '12:45', 'payment': 'Credit card', 'cogs': 113.58, 'gross_margin_percentage': 4.761904762, 'gross_income': 5.679, 'rating': 8.1}
+[2024-12-08T20:00:09.308+0000] {csv_to_kafka_with_redis.py:85} INFO - Row data before serialization: {'id': '6c47ec92-6948-4dd1-aafc-e3e086adce15', 'invoice_id': '574-22-5561', 'branch': 'C', 'city': 'Naypyitaw', 'customer_type': 'Member', 'gender': 'Female', 'product_line': 'Fashion accessories', 'unit_price': 82.63, 'quantity': 10, 'tax_5_percent': 41.315, 'total': 867.615, 'date': '3/19/2019', 'time': '17:08', 'payment': 'Ewallet', 'cogs': 826.3, 'gross_margin_percentage': 4.761904762, 'gross_income': 41.315, 'rating': 7.9}
+[2024-12-08T20:00:09.340+0000] {hive.py:475} INFO - USE `default`
+[2024-12-08T20:00:09.516+0000] {hive.py:475} INFO - 
+    CREATE TABLE IF NOT EXISTS sales (
+        id STRING,
+        invoice_id STRING,
+        branch STRING,
+        city STRING,
+        customer_type STRING,
+        gender STRING,
+        product_line STRING,
+        unit_price FLOAT,
+        quantity INT,
+        tax_5_percent FLOAT,
+        total FLOAT,
+        `date` STRING,
+        time STRING,
+        payment STRING,
+        cogs FLOAT,
+        gross_margin_percentage FLOAT,
+        gross_income FLOAT,
+        rating FLOAT
+    ) STORED AS ORC
+    
+[2024-12-08T20:00:19.559+0000] {logging_mixin.py:190} WARNING - Exception in thread Thread-2 (consume_kafka_to_hive_with_redis):
+[2024-12-08T20:00:19.560+0000] {logging_mixin.py:190} WARNING - Traceback (most recent call last):
+[2024-12-08T20:00:19.561+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+[2024-12-08T20:00:19.562+0000] {logging_mixin.py:190} WARNING -     self.run()
+[2024-12-08T20:00:19.563+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/threading.py", line 1012, in run
+[2024-12-08T20:00:19.564+0000] {logging_mixin.py:190} WARNING -     self._target(*self._args, **self._kwargs)
+[2024-12-08T20:00:19.564+0000] {logging_mixin.py:190} WARNING -   File "/opt/airflow/dags/kafka_to_hive_with_redis.py", line 73, in consume_kafka_to_hive_with_redis
+[2024-12-08T20:00:19.568+0000] {logging_mixin.py:190} WARNING -     metadata = consumer.list_topics(timeout=10)
+[2024-12-08T20:00:19.569+0000] {logging_mixin.py:190} WARNING -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2024-12-08T20:00:19.570+0000] {logging_mixin.py:190} WARNING - cimpl.KafkaException: KafkaError{code=_TRANSPORT,val=-195,str="Failed to get metadata: Local: Broker transport failure"}
+[2024-12-08T20:01:22.396+0000] {csv_to_kafka_with_redis.py:95} INFO - Batch 1 envoyé à Kafka.
+[2024-12-08T20:01:42.468+0000] {csv_to_kafka_with_redis.py:99} INFO - Redis batch status: READY
+[2024-12-08T20:04:31.325+0000] {job.py:229} INFO - Heartbeat recovered after 16.80 seconds
+[2024-12-08T20:04:52.362+0000] {job.py:229} INFO - Heartbeat recovered after 23.71 seconds
+[2024-12-08T20:05:13.254+0000] {job.py:229} INFO - Heartbeat recovered after 21.31 seconds
+[2024-12-08T20:09:16.834+0000] {job.py:239} ERROR - Job heartbeat failed with error
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/jobs/job.py", line 233, in heartbeat
+    heartbeat_callback(session)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/jobs/local_task_job_runner.py", line 284, in heartbeat_callback
+    self.task_instance.refresh_from_db()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2359, in refresh_from_db
+    _refresh_from_db(task_instance=self, session=session, lock_for_update=lock_for_update)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 872, in _refresh_from_db
+    ti = TaskInstance.get_task_instance(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 166, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2345, in get_task_instance
+    return query.one_or_none()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2850, in one_or_none
+    return self._iter().one_or_none()
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2916, in _iter
+    result = self.session.execute(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: SELECT task_instance.task_display_name AS task_instance_task_display_name, task_instance.task_id AS task_instance_task_id, task_instance.dag_id AS task_instance_dag_id, task_instance.run_id AS task_instance_run_id, task_instance.map_index AS task_instance_map_index, task_instance.start_date AS task_instance_start_date, task_instance.end_date AS task_instance_end_date, task_instance.duration AS task_instance_duration, task_instance.state AS task_instance_state, task_instance.try_number AS task_instance_try_number, task_instance.max_tries AS task_instance_max_tries, task_instance.hostname AS task_instance_hostname, task_instance.unixname AS task_instance_unixname, task_instance.job_id AS task_instance_job_id, task_instance.pool AS task_instance_pool, task_instance.pool_slots AS task_instance_pool_slots, task_instance.queue AS task_instance_queue, task_instance.priority_weight AS task_instance_priority_weight, task_instance.operator AS task_instance_operator, task_instance.custom_operator_name AS task_instance_custom_operator_name, task_instance.queued_dttm AS task_instance_queued_dttm, task_instance.queued_by_job_id AS task_instance_queued_by_job_id, task_instance.pid AS task_instance_pid, task_instance.executor AS task_instance_executor, task_instance.executor_config AS task_instance_executor_config, task_instance.updated_at AS task_instance_updated_at, task_instance.rendered_map_index AS task_instance_rendered_map_index, task_instance.external_executor_id AS task_instance_external_executor_id, task_instance.trigger_id AS task_instance_trigger_id, task_instance.trigger_timeout AS task_instance_trigger_timeout, task_instance.next_method AS task_instance_next_method, task_instance.next_kwargs AS task_instance_next_kwargs 
+FROM task_instance 
+WHERE task_instance.dag_id = ? AND task_instance.run_id = ? AND task_instance.task_id = ? AND task_instance.map_index = ?]
+[parameters: ('kafka_hive_pipeline_threaded', 'manual__2024-12-08T19:59:52.900812+00:00', 'sync_producer_and_consumer', -1)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2024-12-08T20:14:24.515+0000] {job.py:254} ERROR - Job heartbeat failed with error. Scheduler is in unhealthy state
+[2024-12-08T20:14:24.517+0000] {local_task_job_runner.py:228} ERROR - Heartbeat time limit exceeded!
+[2024-12-08T20:14:24.522+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2024-12-08T20:14:24.542+0000] {process_utils.py:132} INFO - Sending 15 to group 4443. PIDs of all processes in the group: [4443]
+[2024-12-08T20:14:24.545+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 4443
+[2024-12-08T20:14:24.548+0000] {taskinstance.py:3093} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-12-08T20:14:24.657+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/gestion_airflow.py", line 18, in run_producer_and_consumer
+    # Attendre que les deux threads se terminent
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/usr/local/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3095, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2024-12-08T20:14:24.793+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=kafka_hive_pipeline_threaded, task_id=sync_producer_and_consumer, run_id=manual__2024-12-08T19:59:52.900812+00:00, execution_date=20241208T195952, start_date=20241208T200008, end_date=20241208T201424
+[2024-12-08T20:14:24.972+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-08T20:14:25.019+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4443, status='terminated', exitcode=2, started='20:00:07') (4443) terminated with exit code 2

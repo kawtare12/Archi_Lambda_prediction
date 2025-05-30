@@ -1,0 +1,28 @@
+[2024-12-02T00:01:33.536+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-02T00:01:33.572+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_tohive.process_task_tohive scheduled__2024-12-01T00:00:00+00:00 [queued]>
+[2024-12-02T00:01:33.596+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_tohive.process_task_tohive scheduled__2024-12-01T00:00:00+00:00 [queued]>
+[2024-12-02T00:01:33.597+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2024-12-02T00:01:33.692+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): process_task_tohive> on 2024-12-01 00:00:00+00:00
+[2024-12-02T00:01:33.752+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=253) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-12-02T00:01:33.759+0000] {standard_task_runner.py:72} INFO - Started process 267 to run task
+[2024-12-02T00:01:33.748+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'dag_tohive', 'process_task_tohive', 'scheduled__2024-12-01T00:00:00+00:00', '--job-id', '90', '--raw', '--subdir', 'DAGS_FOLDER/dag_9lines_data.py', '--cfg-path', '/tmp/tmpbphb9v8i']
+[2024-12-02T00:01:33.763+0000] {standard_task_runner.py:105} INFO - Job 90: Subtask process_task_tohive
+[2024-12-02T00:01:34.072+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_tohive.process_task_tohive scheduled__2024-12-01T00:00:00+00:00 [running]> on host 45770b1a429e
+[2024-12-02T00:01:34.346+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='admin' AIRFLOW_CTX_DAG_ID='dag_tohive' AIRFLOW_CTX_TASK_ID='process_task_tohive' AIRFLOW_CTX_EXECUTION_DATE='2024-12-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-12-01T00:00:00+00:00'
+[2024-12-02T00:01:34.348+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-02T00:01:35.428+0000] {dag_9lines_data.py:22} INFO - Message delivered to tohive [0]
+[2024-12-02T00:01:35.429+0000] {dag_9lines_data.py:22} INFO - Message delivered to tohive [0]
+[2024-12-02T00:01:35.430+0000] {dag_9lines_data.py:22} INFO - Message delivered to tohive [0]
+[2024-12-02T00:01:35.430+0000] {dag_9lines_data.py:22} INFO - Message delivered to tohive [0]
+[2024-12-02T00:01:35.431+0000] {dag_9lines_data.py:22} INFO - Message delivered to tohive [0]
+[2024-12-02T00:01:35.432+0000] {dag_9lines_data.py:22} INFO - Message delivered to tohive [0]
+[2024-12-02T00:01:35.433+0000] {dag_9lines_data.py:22} INFO - Message delivered to tohive [0]
+[2024-12-02T00:01:35.434+0000] {dag_9lines_data.py:22} INFO - Message delivered to tohive [0]
+[2024-12-02T00:01:35.435+0000] {dag_9lines_data.py:22} INFO - Message delivered to tohive [0]
+[2024-12-02T00:01:35.435+0000] {dag_9lines_data.py:74} INFO - Toutes les données de test.csv ont été publiées avec succès.
+[2024-12-02T00:01:35.438+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-12-02T00:01:35.457+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-02T00:01:35.458+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dag_tohive, task_id=process_task_tohive, run_id=scheduled__2024-12-01T00:00:00+00:00, execution_date=20241201T000000, start_date=20241202T000133, end_date=20241202T000135
+[2024-12-02T00:01:35.548+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-12-02T00:01:35.577+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-02T00:01:35.580+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

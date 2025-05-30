@@ -1,0 +1,34 @@
+[2024-12-02T01:33:14.766+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-02T01:33:14.790+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_views_creation_dag.create_sales_monthly_summary manual__2024-12-02T01:33:09.185816+00:00 [queued]>
+[2024-12-02T01:33:14.805+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_views_creation_dag.create_sales_monthly_summary manual__2024-12-02T01:33:09.185816+00:00 [queued]>
+[2024-12-02T01:33:14.806+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2024-12-02T01:33:14.848+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): create_sales_monthly_summary> on 2024-12-02 01:33:09.185816+00:00
+[2024-12-02T01:33:14.855+0000] {standard_task_runner.py:72} INFO - Started process 1467 to run task
+[2024-12-02T01:33:14.858+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'batch_views_creation_dag', 'create_sales_monthly_summary', 'manual__2024-12-02T01:33:09.185816+00:00', '--job-id', '110', '--raw', '--subdir', 'DAGS_FOLDER/batch_views.py', '--cfg-path', '/tmp/tmpqaugq5zj']
+[2024-12-02T01:33:14.860+0000] {standard_task_runner.py:105} INFO - Job 110: Subtask create_sales_monthly_summary
+[2024-12-02T01:33:14.970+0000] {task_command.py:467} INFO - Running <TaskInstance: batch_views_creation_dag.create_sales_monthly_summary manual__2024-12-02T01:33:09.185816+00:00 [running]> on host 45770b1a429e
+[2024-12-02T01:33:15.164+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='batch_views_creation_dag' AIRFLOW_CTX_TASK_ID='create_sales_monthly_summary' AIRFLOW_CTX_EXECUTION_DATE='2024-12-02T01:33:09.185816+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-02T01:33:09.185816+00:00'
+[2024-12-02T01:33:15.166+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-02T01:33:15.353+0000] {hive.py:475} INFO - USE `default`
+[2024-12-02T01:33:15.490+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS sales_monthly_summary
+        STORED AS PARQUET
+        AS
+        SELECT
+            product_line,
+            YEAR(CAST(FROM_UNIXTIME(UNIX_TIMESTAMP(`date`, 'MM/dd/yyyy')) AS DATE)) AS year,
+            MONTH(CAST(FROM_UNIXTIME(UNIX_TIMESTAMP(`date`, 'MM/dd/yyyy')) AS DATE)) AS month,
+            SUM(quantity) AS total_quantity,
+            SUM(total) AS total_sales
+        FROM
+            sales
+        GROUP BY
+            product_line, YEAR(CAST(FROM_UNIXTIME(UNIX_TIMESTAMP(`date`, 'MM/dd/yyyy')) AS DATE)), MONTH(CAST(FROM_UNIXTIME(UNIX_TIMESTAMP(`date`, 'MM/dd/yyyy')) AS DATE))
+    
+[2024-12-02T01:33:20.777+0000] {batch_views.py:26} INFO - Created sales_monthly_summary view
+[2024-12-02T01:33:20.801+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-12-02T01:33:20.833+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-02T01:33:20.834+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=batch_views_creation_dag, task_id=create_sales_monthly_summary, run_id=manual__2024-12-02T01:33:09.185816+00:00, execution_date=20241202T013309, start_date=20241202T013314, end_date=20241202T013320
+[2024-12-02T01:33:20.952+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-12-02T01:33:21.020+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-12-02T01:33:21.058+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

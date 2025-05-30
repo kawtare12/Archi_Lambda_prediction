@@ -1,0 +1,99 @@
+[2024-12-02T00:01:40.925+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-02T00:01:40.955+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag1.process_task_tag2 scheduled__2024-12-01T00:00:00+00:00 [queued]>
+[2024-12-02T00:01:40.974+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag1.process_task_tag2 scheduled__2024-12-01T00:00:00+00:00 [queued]>
+[2024-12-02T00:01:40.976+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2024-12-02T00:01:41.024+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): process_task_tag2> on 2024-12-01 00:00:00+00:00
+[2024-12-02T00:01:41.038+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=272) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-12-02T00:01:41.040+0000] {standard_task_runner.py:72} INFO - Started process 286 to run task
+[2024-12-02T00:01:41.038+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'dag1', 'process_task_tag2', 'scheduled__2024-12-01T00:00:00+00:00', '--job-id', '91', '--raw', '--subdir', 'DAGS_FOLDER/dag_data.py', '--cfg-path', '/tmp/tmpkxbku3bf']
+[2024-12-02T00:01:41.041+0000] {standard_task_runner.py:105} INFO - Job 91: Subtask process_task_tag2
+[2024-12-02T00:01:41.151+0000] {task_command.py:467} INFO - Running <TaskInstance: dag1.process_task_tag2 scheduled__2024-12-01T00:00:00+00:00 [running]> on host 45770b1a429e
+[2024-12-02T00:01:41.369+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='admin' AIRFLOW_CTX_DAG_ID='dag1' AIRFLOW_CTX_TASK_ID='process_task_tag2' AIRFLOW_CTX_EXECUTION_DATE='2024-12-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-12-01T00:00:00+00:00'
+[2024-12-02T00:01:41.373+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-02T00:01:41.518+0000] {dag_data.py:49} INFO - Processing chunk:     Invoice ID Branch       City  ... gross margin percentage gross income Rating
+0  750-67-8428      A     Yangon  ...                4.761905      26.1415    9.1
+1  226-31-3081      C  Naypyitaw  ...                4.761905       3.8200    9.6
+2  631-41-3108      A     Yangon  ...                4.761905      16.2155    7.4
+3  123-19-1176      A     Yangon  ...                4.761905      23.2880    8.4
+4  373-73-7910      A     Yangon  ...                4.761905      30.2085    5.3
+
+[5 rows x 17 columns]
+[2024-12-02T00:02:11.546+0000] {dag_data.py:49} INFO - Processing chunk:      Invoice ID Branch  ... gross income Rating
+50  326-78-5178      C  ...      31.9900    9.5
+51  162-48-8011      A  ...      11.1475    8.5
+52  616-24-2851      B  ...       3.5740    6.5
+53  778-71-5554      C  ...       0.7715    6.1
+54  242-55-6721      B  ...       1.6160    6.5
+
+[5 rows x 17 columns]
+[2024-12-02T00:02:41.567+0000] {dag_data.py:49} INFO - Processing chunk:       Invoice ID Branch  ... gross income Rating
+100  163-56-7055      C  ...       2.4355    4.1
+101  189-98-2939      C  ...      35.3475    7.2
+102  551-21-3069      C  ...      10.3815    4.9
+103  212-62-1842      A  ...      17.4780    9.9
+104  716-39-1409      B  ...      10.6225    8.0
+
+[5 rows x 17 columns]
+[2024-12-02T00:03:11.587+0000] {dag_data.py:49} INFO - Processing chunk:       Invoice ID Branch  ... gross income Rating
+150  608-96-3517      B  ...       18.308    4.8
+151  584-86-7256      C  ...       12.096    7.3
+152  746-94-0204      A  ...       37.458    7.4
+153  214-17-6927      C  ...        4.944    9.9
+154  400-89-4171      C  ...       32.388    9.3
+
+[5 rows x 17 columns]
+[2024-12-02T00:03:41.607+0000] {dag_data.py:49} INFO - Processing chunk:       Invoice ID Branch  ... gross income Rating
+200  606-80-4905      C  ...       5.7450    6.8
+201  542-41-0513      B  ...      11.4980    6.6
+202  426-39-2418      C  ...      21.4935    9.8
+203  875-46-5808      B  ...      12.9500    8.7
+204  394-43-4238      B  ...       4.4425    5.4
+
+[5 rows x 17 columns]
+[2024-12-02T00:04:11.628+0000] {dag_data.py:49} INFO - Processing chunk:       Invoice ID Branch  ... gross income Rating
+250  845-51-0542      B  ...      20.9475    6.4
+251  662-47-5456      C  ...      17.5950    8.4
+252  883-17-4236      C  ...       1.4390    7.2
+253  290-68-2984      A  ...       4.7500    5.2
+254  704-11-6354      A  ...      23.5600    8.9
+
+[5 rows x 17 columns]
+[2024-12-02T00:04:41.648+0000] {dag_data.py:49} INFO - Processing chunk:       Invoice ID Branch  ... gross income Rating
+300  446-47-6729      C  ...       9.9820    6.7
+301  573-10-3877      B  ...       1.9505    4.7
+302  735-06-4124      C  ...       2.4305    4.4
+303  439-54-7422      A  ...      10.2380    4.7
+304  396-90-2219      B  ...       5.9840    8.6
+
+[5 rows x 17 columns]
+[2024-12-02T00:05:11.666+0000] {dag_data.py:49} INFO - Processing chunk:       Invoice ID Branch  ... gross income Rating
+350  860-79-0874      C  ...      49.6500    6.6
+351  834-61-8124      A  ...      18.0915    5.5
+352  115-99-4379      B  ...      19.1555    8.5
+353  565-67-6697      B  ...      12.1500    4.8
+354  320-49-6392      C  ...       1.5120    8.4
+
+[5 rows x 17 columns]
+[2024-12-02T00:05:41.689+0000] {dag_data.py:49} INFO - Processing chunk:       Invoice ID Branch  ... gross income Rating
+400  110-05-6330      C  ...      11.8290    9.4
+401  651-61-0874      C  ...       9.2440    6.2
+402  236-86-3015      C  ...       0.6990    9.8
+403  831-64-0259      B  ...       9.9375    9.6
+404  587-03-7455      C  ...      34.2265    4.9
+
+[5 rows x 17 columns]
+[2024-12-02T00:06:11.714+0000] {dag_data.py:49} INFO - Processing chunk:       Invoice ID Branch  ... gross income Rating
+450  891-01-7034      B  ...      22.4130    6.7
+451  744-09-5786      B  ...       6.6030    7.6
+452  727-17-0390      A  ...      15.9025    4.8
+453  568-88-3448      A  ...       1.2500    5.5
+454  187-83-5490      A  ...       4.1540    4.7
+
+[5 rows x 17 columns]
+[2024-12-02T00:06:26.671+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2024-12-02T00:06:26.674+0000] {process_utils.py:132} INFO - Sending 15 to group 286. PIDs of all processes in the group: [286]
+[2024-12-02T00:06:26.679+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 286
+[2024-12-02T00:06:26.687+0000] {taskinstance.py:3093} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-12-02T00:06:26.733+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2024-12-02T00:06:26.736+0000] {process_utils.py:132} INFO - Sending 15 to group 286. PIDs of all processes in the group: [286]
+[2024-12-02T00:06:26.737+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 286
