@@ -59,7 +59,8 @@ Enables predictive analytics for optimizing business strategies.
 - **Containerization**: Docker for deploying the application
   Visualisation sur streamlit :![image](https://github.com/user-attachments/assets/6bb0af5a-9250-4aff-8225-eed9f965c4fa)
   ![image](https://github.com/user-attachments/assets/0c6faa7c-65a5-4f53-9869-88637ea3fbad)
-  ![image](https://github.com/user-attachments/assets/4a8eea01-7c12-4f51-a470-1f34d8858ce7)
+  ![image](https://github.com/user-attachments/assets/a74079d0-0338-4b32-a2d3-822fb0b12681)
+
 
 
 
